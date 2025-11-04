@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuestPreocupacaoActivity">
+    tools:context=".QuestRotinaActivity">
 
     <ImageView
         android:id="@+id/ondalaranja"
@@ -13,21 +13,21 @@
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/onda_laranjatopo"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/onda_laranjatopo" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ondalaranja"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="@+id/ondalaranja"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/dermagelogotype" />
 
     <ImageView
@@ -59,13 +59,13 @@
 
 
     <TextView
-        android:id="@+id/tvpreocupacoes"
+        android:id="@+id/tvqualrotina"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="284dp"
         android:gravity="center"
-        android:text="Quais suas principais preocupações?"
+        android:text="Qual sua atual rotina de Skincare?"
         android:textColor="#000000"
         android:textSize="20sp"
         android:fontFamily="@font/playfairbold"
@@ -80,7 +80,7 @@
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="320dp"
         android:gravity="center"
-        android:text="Selecione todas que se aplicam a sua pele"
+        android:text="Nos conte como você cuida da sua pele atualmente"
         android:textColor="#7A7A7A"
         android:textSize="13sp"
         android:fontFamily="@font/playfair"
@@ -117,9 +117,10 @@
         app:cornerRadius="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.395"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.963" />
+        app:layout_constraintVertical_bias="0.896" />
 
     <ImageButton
         android:id="@+id/setaBack"
@@ -135,10 +136,10 @@
         app:srcCompat="@drawable/setaback" />
 
     <TextView
-        android:id="@+id/contador3de6"
+        android:id="@+id/contador4de6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="3 de 6"
+        android:text="4 de 6"
         android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -180,59 +181,60 @@
         app:layout_constraintTop_toBottomOf="@+id/ondalaranja"
         app:srcCompat="@drawable/barraprogresso" />
 
+    <ImageView
+        android:id="@+id/barraProgress4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        app:layout_constraintEnd_toEndOf="@+id/progressBar"
+        app:layout_constraintHorizontal_bias="0.576"
+        app:layout_constraintStart_toStartOf="@+id/progressBar"
+        app:layout_constraintTop_toBottomOf="@+id/ondalaranja"
+        app:srcCompat="@drawable/barraprogresso" />
+
     <CheckBox
-        android:id="@+id/cb_poros"
+        android:id="@+id/cb_moderada"
         style="@style/OptionCard"
         android:layout_width="351dp"
         android:layout_height="52dp"
         android:layout_marginTop="272dp"
-        android:text="Poros dilatados\nPoros visíveis e abertos"
+        android:text="Moderada"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ondalaranja" />
 
     <CheckBox
-        android:id="@+id/cb_brilho"
+        android:id="@+id/cb_basica"
         style="@style/OptionCard.Small"
         android:layout_width="351dp"
         android:layout_height="52dp"
-        android:text="Falta de Brilho\nPele opaca, sem luminosidade"
+        android:text="Básica"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cb_manchas" />
+        app:layout_constraintTop_toBottomOf="@+id/cb_ntrotina" />
 
     <CheckBox
-        android:id="@+id/cb_manchas"
+        android:id="@+id/cb_ntrotina"
         style="@style/OptionCard"
         android:layout_width="351dp"
         android:layout_height="52dp"
         android:layout_marginTop="152dp"
-        android:text="Manchas\nBrilho excessivo, poros dilatados"
+        android:text="Não tenho rotina"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ondalaranja" />
 
     <CheckBox
-        android:id="@+id/cb_rugas"
+        android:id="@+id/completa"
         style="@style/OptionCard"
         android:layout_width="351dp"
         android:layout_height="52dp"
-        android:text="Rugas/Linhas\nBrilho excessivo, poros dilatados"
+        android:text="Completa"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ondalaranja"
         app:layout_constraintVertical_bias="0.688" />
-
-    <CheckBox
-        android:id="@+id/cb_acne"
-        style="@style/OptionCard"
-        android:layout_width="351dp"
-        android:layout_height="52dp"
-        android:text="Acnes/Espinhas\nCravos, espinhas, inflamações"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cb_rugas" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

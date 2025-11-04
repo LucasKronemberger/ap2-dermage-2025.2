@@ -1,0 +1,19 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Fundo (parte "vazia" da barra) -->
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <corners android:radius="50dp" />
+            <solid android:color="@color/dermage_lightgray" />
+        </shape>
+    </item>
+
+    <!-- Barra preenchida (progresso real) -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="rectangle">
+                <corners android:radius="50dp" />
+                <solid android:color="@color/dermage_orange" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>

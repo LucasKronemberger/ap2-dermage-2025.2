@@ -2,4 +2,14 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="text_primary">#222222</color>
+    <color name="text_secondary">#777777</color>
+    <color name="text_tertiary">#BFBFBF</color>
+    <color name="button_disabled">#D8D8D8</color>
+    <color name="brand_orange">#F7931E</color>
+    <color name="dermage_orange">#F28C28</color>
+    <color name="dermage_gray">#6A6A6A</color>
+    <color name="dermage_lightgray">#F5F5F5</color>
+    <color name="dermage_dark">#222222</color>
+    <color name="dermage_muted_gray">#9E9E9E</color>
 </resources>

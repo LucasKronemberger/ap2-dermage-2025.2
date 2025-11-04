@@ -23,4 +23,20 @@
         \n\nAgradecemos sua confiança.
         ]]>
     </string>
+    <string name="app_name">Dermage</string>
+    <string name="logo_desc">Logo da Dermage</string>
+    <string name="preview_desc">Pré-visualização da foto</string>
+    <string name="back">Voltar</string>
+    <string name="passo_6_de_6">6 de 6</string>
+    <string name="envie_uma_foto">Envie uma foto do seu rosto</string>
+    <string name="instrucao_foto">Para uma análise mais precisa, tire uma foto em boa iluminação e com rosto limpo</string>
+    <string name="confirmar_analise">Confirmar Análise</string>
+    <string name="pular_etapa">Pular etapa</string>
+    <string name="analisando_sua_pele">Analisando sua Pele</string>
+    <string name="mensagem_analisando">Nossa IA está processando suas informações para criar recomendações personalizadas</string>
+    <string name="progresso_inicial">0% concluído</string>
+    <string name="progresso_template">%1$d%% concluído</string>
+    <string name="status_iniciando">Iniciando análise...</string>
+    <string name="seguranca_dados">Dados seguros</string>
+    <string name="baseado_em_casos">Base científica</string>
 </resources>
