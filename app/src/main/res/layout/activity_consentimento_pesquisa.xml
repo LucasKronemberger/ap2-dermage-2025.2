@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ConsentimentoPesquisaActivity"
-    android:backgroundTint="@drawable/background">
+    android:background="@drawable/tela_de_fundo">
 
     <TextView
         android:id="@+id/estamosQuaseLa"

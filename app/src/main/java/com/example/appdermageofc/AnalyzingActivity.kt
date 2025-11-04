@@ -35,7 +35,7 @@ class AnalyzingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.analisando_pele)
+        setContentView(R.layout.activity_analyzing)
 
         progressBar = findViewById(R.id.progressBarLinear)
         progressText = findViewById(R.id.textProgress)
