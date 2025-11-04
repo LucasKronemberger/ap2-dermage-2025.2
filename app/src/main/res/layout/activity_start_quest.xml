@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@drawable/background"
+    tools:context=".StartQuestActivity">
+
+    <TextView
+        android:id="@+id/estamosQuaseLa"
+        android:layout_width="383dp"
+        android:layout_height="51dp"
+        android:fontFamily="@font/cambay_bold"
+        android:text="Estamos quase lá!"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.355" />
+
+    <TextView
+        android:id="@+id/respondaAlgumasPerguntas"
+        android:layout_width="344dp"
+        android:layout_height="75dp"
+        android:fontFamily="@font/cambay_bold"
+        android:text="Responda algumas perguntas para concluir a sua análise!"
+        android:textAlignment="center"
+        android:textColor="#464646"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/estamosQuaseLa"
+        app:layout_constraintVertical_bias="0.166" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="305dp"
+        android:layout_height="48dp"
+        android:backgroundTint="#F49611"
+        android:fontFamily="@font/cambay_bold"
+        android:text="Continuar"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/estamosQuaseLa"
+        app:layout_constraintVertical_bias="0.361" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

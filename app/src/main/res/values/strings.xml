@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">appdermageofc</string>
+
+    <string name="termo_consentimento_analise_ia">
+        <![CDATA[
+        <b>Termo de Consentimento para Análise de Pele por Imagem</b>
+        \n\nAo prosseguir, você concorda com os termos de uso da ferramenta de análise de pele por Inteligência Artificial (IA) da Dermage. Por favor, leia com atenção.
+        \n\n<b>1. Coleta e Finalidade dos Dados:</b>
+        \nPara realizar a análise, o aplicativo solicitará o envio de uma fotografia do seu rosto ou da área de pele designada. Esta imagem será processada por nosso sistema de Inteligência Artificial (IA) com a finalidade exclusiva de realizar uma análise dermatológica preliminar, identificando características visíveis da sua pele, como nível de oleosidade, hidratação, textura, e outros aspectos relevantes.
+        \n\n<b>2. Uso das Informações:</b>
+        \nOs resultados da análise serão utilizados para gerar recomendações personalizadas de produtos e rotinas de cuidados Dermage, adequados às necessidades identificadas da sua pele. Adicionalmente, os dados da sua imagem poderão ser utilizados de forma totalmente anônoma e agregada, sem qualquer vínculo com sua identidade, para o aprimoramento contínuo do nosso algoritmo de IA.
+        \n\n<b>3. Aviso Importante: A Análise Não é um Diagnóstico Médico:</b>
+        \nA análise fornecida por esta ferramenta é uma sugestão de cuidados e tem caráter estritamente cosmético e educacional. <b>ELA NÃO SUBSTITUI, em hipótese alguma, a consulta, o diagnóstico ou o tratamento realizado por um médico dermatologista.</b> Para qualquer condição de saúde, suspeita de doença ou preocupação dermatológica, consulte um especialista.
+        \n\n<b>4. Armazenamento e Segurança:</b>
+        \nA Dermage se compromete a armazenar sua imagem e os dados da análise em servidores seguros, utilizando criptografia e as melhores práticas de segurança da informação para proteger sua privacidade. Suas imagens e dados pessoais identificáveis não serão vendidos ou compartilhados com terceiros sem o seu consentimento explícito.
+        \n\n<b>5. Seus Direitos e Revogação do Consentimento:</b>
+        \nA qualquer momento, você tem o direito de revogar este consentimento e solicitar a exclusão de suas imagens e dados da análise. Esta solicitação pode ser feita através das configurações do seu perfil no aplicativo ou contatando nosso canal de suporte ao cliente.
+        \n\n<b>Consentimento Explícito:</b>
+        \n\nAo clicar em "CONCORDO" e enviar sua foto, você declara que:
+        \n&#8226; Leu, compreendeu integralmente e concorda com todos os termos aqui apresentados.
+        \n&#8226; É maior de 18 anos.
+        \n&#8226; Autoriza, de forma livre e voluntária, a coleta e o processamento da sua imagem pela Dermage para os fins descritos acima.
+        \n\nAgradecemos sua confiança.
+        ]]>
+    </string>
+</resources>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuestFaixaEtariaActivity">
+
+    <ImageView
+        android:id="@+id/ondalaranja"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/onda_laranjatopo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.048"
+        app:srcCompat="@drawable/dermagelogotype" />
+
+    <ImageView
+        android:id="@+id/progressBar"
+        android:layout_width="363dp"
+        android:layout_height="6dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="252dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/progressbar" />
+
+    <ImageView
+        android:id="@+id/BarraProgresso"
+        android:layout_width="0dp"
+        android:layout_height="6dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/barraprogresso"
+        app:layout_constraintTop_toTopOf="@id/progressBar"
+        app:layout_constraintBottom_toBottomOf="@id/progressBar"
+        app:layout_constraintStart_toStartOf="@id/progressBar"
+        app:layout_constraintEnd_toStartOf="@id/progressBar"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="180dp"/>
+
+    <TextView
+        android:id="@+id/TvTitulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="284dp"
+        android:gravity="center"
+        android:text="Qual sua Faixa Etária?"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:fontFamily="@font/playfairbold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TvSubtitulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="320dp"
+        android:gravity="center"
+        android:text="Isso nos ajuda a entender as necessidades da sua pele"
+        android:textColor="#7A7A7A"
+        android:textSize="13sp"
+        android:fontFamily="@font/playfair"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/RadioGroupFaixaEtaria"
+        android:layout_width="363dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="352dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/RbMenos18"
+            style="@style/CustomRadioButton"
+            android:text="Menos de 18 anos" />
+
+        <RadioButton
+            android:id="@+id/Rb18a29"
+            style="@style/CustomRadioButton"
+            android:text="De 18 a 29 anos" />
+
+        <RadioButton
+            android:id="@+id/Rb30a45"
+            style="@style/CustomRadioButton"
+            android:text="De 30 a 45 anos" />
+
+        <RadioButton
+            android:id="@+id/RbMais45"
+            style="@style/CustomRadioButton"
+            android:text="Mais de 45 anos" />
+
+    </RadioGroup>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnProxima2"
+        android:layout_width="363dp"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="24dp"
+        android:text="Próxima"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:backgroundTint="#F39A08"
+        app:cornerRadius="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.923" />
+
+    <ImageButton
+        android:id="@+id/BtnBack"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.026"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
+        app:srcCompat="@drawable/setaback" />
+
+    <TextView
+        android:id="@+id/Marcador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2 de 6"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.968"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.304" />
+
+    <ImageView
+        android:id="@+id/ImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        app:layout_constraintEnd_toEndOf="@+id/progressBar"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/progressBar"
+        app:layout_constraintTop_toBottomOf="@+id/ondalaranja"
+        app:srcCompat="@drawable/barraprogresso" />
+
+    <ImageView
+        android:id="@+id/ImageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        app:layout_constraintEnd_toEndOf="@+id/progressBar"
+        app:layout_constraintHorizontal_bias="0.167"
+        app:layout_constraintStart_toStartOf="@+id/progressBar"
+        app:layout_constraintTop_toBottomOf="@+id/ondalaranja"
+        app:srcCompat="@drawable/barraprogresso" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ConsentimentoPesquisaActivity"
+    android:backgroundTint="@drawable/background">
+
+    <TextView
+        android:id="@+id/estamosQuaseLa"
+        android:layout_width="383dp"
+        android:layout_height="51dp"
+        android:fontFamily="@font/cambay_bold"
+        android:text="Estamos quase lá!"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.355" />
+
+    <TextView
+        android:id="@+id/respondaAlgumasPerguntas"
+        android:layout_width="335dp"
+        android:layout_height="37dp"
+        android:fontFamily="@font/cambay_bold"
+        android:text="Responda algumas perguntas"
+        android:textAlignment="center"
+        android:textColor="#464646"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/estamosQuaseLa"
+        app:layout_constraintVertical_bias="0.037" />
+
+    <LinearLayout
+        android:id="@+id/bottom_section"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:background="#F49611"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/respondaAlgumasPerguntas">
+
+        <View
+            android:layout_width="40dp"
+            android:layout_height="4dp"
+            android:layout_marginBottom="16dp"
+            android:background="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Termo de consentimento para o teste:"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:fontFamily="@font/cambay_bold" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="1"
+            android:background="@drawable/background_caixa_txt_consentimento"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/termos_consentimento_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/termo_consentimento_analise_ia"
+                android:textColor="@android:color/black" />
+        </ScrollView>
+
+        <Button
+            android:id="@+id/agree_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/white"
+            android:text="CONCORDO"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:fontFamily="@font/cambay_bold"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
