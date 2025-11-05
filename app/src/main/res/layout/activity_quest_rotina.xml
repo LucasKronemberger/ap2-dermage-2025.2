@@ -88,21 +88,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <LinearLayout
-        android:id="@+id/opcoesPreocupacoes"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="12dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvsbtpreocu">
-
-
-    </LinearLayout>
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnProxima2"
         android:layout_width="363dp"
@@ -117,10 +102,9 @@
         app:cornerRadius="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.395"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.896" />
+        app:layout_constraintVertical_bias="0.961" />
 
     <ImageButton
         android:id="@+id/setaBack"
@@ -193,51 +177,48 @@
         app:layout_constraintTop_toBottomOf="@+id/ondalaranja"
         app:srcCompat="@drawable/barraprogresso" />
 
-    <CheckBox
-        android:id="@+id/cb_moderada"
-        style="@style/OptionCard"
-        android:layout_width="351dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="272dp"
-        android:text="Moderada"
-        app:buttonTint="@null"
+    <RadioGroup
+        android:id="@+id/radioGroupRotina"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ondalaranja" />
+        app:layout_constraintTop_toBottomOf="@id/tvsbtpreocu">
 
-    <CheckBox
-        android:id="@+id/cb_basica"
-        style="@style/OptionCard.Small"
-        android:layout_width="351dp"
-        android:layout_height="52dp"
-        android:text="Básica"
-        app:buttonTint="@null"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cb_ntrotina" />
+        <RadioButton
+            android:id="@+id/rb_ntrotina"
+            style="@style/OptionCard"
+            app:buttonTint="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Não tenho rotina" />
 
-    <CheckBox
-        android:id="@+id/cb_ntrotina"
-        style="@style/OptionCard"
-        android:layout_width="351dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="152dp"
-        android:text="Não tenho rotina"
-        app:buttonTint="@null"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ondalaranja" />
+        <RadioButton
+            android:id="@+id/rb_basica"
+            style="@style/OptionCard.Small"
+            app:buttonTint="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Básica" />
 
-    <CheckBox
-        android:id="@+id/completa"
-        style="@style/OptionCard"
-        android:layout_width="351dp"
-        android:layout_height="52dp"
-        android:text="Completa"
-        app:buttonTint="@null"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cb_moderada" />
+        <RadioButton
+            android:id="@+id/rb_moderada"
+            style="@style/OptionCard"
+            app:buttonTint="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Moderada" />
+
+        <RadioButton
+            android:id="@+id/rb_completa"
+            style="@style/OptionCard"
+            app:buttonTint="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Completa" />
+
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

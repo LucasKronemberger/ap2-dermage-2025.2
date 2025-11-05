@@ -116,9 +116,8 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="8dp">
 
-            <!-- Exemplo de card (repita para cada opção) -->
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="220dp"
+                android:id="@+id/cardPeleNormal" android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
                 app:cardCornerRadius="12dp"
@@ -158,10 +157,11 @@
                         android:textColor="#666666"
                         android:textSize="14sp" />
                 </LinearLayout>
+
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="220dp"
+                android:id="@+id/cardPeleOleosa" android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
                 app:cardCornerRadius="12dp"
@@ -201,10 +201,11 @@
                         android:textColor="#666666"
                         android:textSize="14sp" />
                 </LinearLayout>
+
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="220dp"
+                android:id="@+id/cardPeleSeca" android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
                 app:cardCornerRadius="12dp"
@@ -244,10 +245,11 @@
                         android:textColor="#666666"
                         android:textSize="14sp" />
                 </LinearLayout>
+
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="220dp"
+                android:id="@+id/cardPeleMista" android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
                 app:cardCornerRadius="12dp"
@@ -287,6 +289,7 @@
                         android:textColor="#666666"
                         android:textSize="14sp" />
                 </LinearLayout>
+
             </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>

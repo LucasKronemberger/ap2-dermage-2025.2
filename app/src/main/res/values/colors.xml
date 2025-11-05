@@ -12,4 +12,5 @@
     <color name="dermage_lightgray">#F5F5F5</color>
     <color name="dermage_dark">#222222</color>
     <color name="dermage_muted_gray">#9E9E9E</color>
+    <color name="card_border_gray">#DDDDDD</color>
 </resources>
