@@ -9,7 +9,7 @@ object RetrofitClient {
 
     // ❗️❗️❗️ MUITO IMPORTANTE ❗️❗️❗️
     // Substitua pela URL base real da sua API
-    private const val BASE_URL = "https://SUA_API_AQUI.com/"
+    private const val BASE_URL = "http://10.0.2.2:8000/"
 
     // Cria um "Logger" para vermos as chamadas de rede no Logcat
     private val logging = HttpLoggingInterceptor().apply {
