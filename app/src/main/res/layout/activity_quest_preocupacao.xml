@@ -123,10 +123,10 @@
 
     <ImageButton
         android:id="@+id/setaBack"
-        android:contentDescription="Voltar"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Voltar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.026"
@@ -140,7 +140,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="3 de 6"
-        android:textSize="12sp"
+        android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.968"
@@ -181,6 +181,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ondalaranja"
         app:srcCompat="@drawable/barraprogresso" />
 
+
     <CheckBox
         android:id="@+id/cb_poros"
         style="@style/OptionCard"
@@ -188,6 +189,7 @@
         android:layout_height="52dp"
         android:layout_marginTop="272dp"
         android:text="Poros dilatados\nPoros visíveis e abertos"
+        app:buttonTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ondalaranja" />
@@ -198,6 +200,7 @@
         android:layout_width="351dp"
         android:layout_height="52dp"
         android:text="Falta de Brilho\nPele opaca, sem luminosidade"
+        app:buttonTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_manchas" />
@@ -209,8 +212,8 @@
         android:layout_height="52dp"
         android:layout_marginTop="152dp"
         android:text="Manchas\nBrilho excessivo, poros dilatados"
+        app:buttonTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ondalaranja" />
 
@@ -220,11 +223,10 @@
         android:layout_width="351dp"
         android:layout_height="52dp"
         android:text="Rugas/Linhas\nBrilho excessivo, poros dilatados"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:buttonTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ondalaranja"
-        app:layout_constraintVertical_bias="0.688" />
+        app:layout_constraintTop_toBottomOf="@+id/cb_poros" />
 
     <CheckBox
         android:id="@+id/cb_acne"
@@ -232,6 +234,7 @@
         android:layout_width="351dp"
         android:layout_height="52dp"
         android:text="Acnes/Espinhas\nCravos, espinhas, inflamações"
+        app:buttonTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_rugas" />

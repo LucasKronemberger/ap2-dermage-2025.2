@@ -45,4 +45,14 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    
+    // Tudo para o funcionamento da API
+    // Retrofit (para chamadas de rede)
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    // Interceptor (para nos ajudar a ver os logs da rede, essencial para depurar)
+    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+    // Coroutines (para fazer a chamada de rede fora da thread principal)
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
 }
