@@ -22,28 +22,24 @@ class CapturaImagemActivity : AppCompatActivity() {
     // Variável para guardar o caminho (Uri) da foto tirada pela câmera
     private var imageUri: Uri? = null
 
+    // 👈 1. VARIÁVEL PARA GUARDAR A CORRENTE DE PERGUNTAS
+    private var questions: ArrayList<QuizQuestion>? = null
+
     // --- 1. Lançador da Galeria ---
-    // Prepara um "contrato" para pegar conteúdo (uma imagem)
     private val galleryLauncher = registerForActivityResult(
         ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
-        // Este é o "callback" - o que acontece quando o usuário seleciona uma imagem
         uri?.let {
-            // Se a Uri não for nula, atualiza o ImageView
-            imageUri = it // Salva a Uri para usar depois
+            imageUri = it
             findViewById<ImageView>(R.id.fotoRosto).setImageURI(it)
         }
     }
 
     // --- 2. Lançador da Câmera ---
-    // Prepara um "contrato" para tirar uma foto
     private val cameraLauncher = registerForActivityResult(
         ActivityResultContracts.TakePicture()
     ) { success: Boolean ->
-        // Este é o "callback" - o que acontece quando o usuário tira a foto
         if (success) {
-            // Se a foto foi tirada com sucesso, o "imageUri" que criamos já
-            // aponta para ela. Apenas atualizamos o ImageView.
             findViewById<ImageView>(R.id.fotoRosto).setImageURI(imageUri)
         }
     }
@@ -51,7 +47,7 @@ class CapturaImagemActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // --- CÓDIGO DA TELA CHEIA (O SEU CÓDIGO) ---
+        // --- CÓDIGO DA TELA CHEIA ---
         enableEdgeToEdge()
         setContentView(R.layout.activity_captura_imagem)
         val root = findViewById<ViewGroup>(android.R.id.content).getChildAt(0)
@@ -67,6 +63,11 @@ class CapturaImagemActivity : AppCompatActivity() {
         }
         // --- FIM DO CÓDIGO DA TELA CHEIA ---
 
+        // 👈 2. RECEBE A LISTA DE PERGUNTAS DA TELA ANTERIOR
+        questions = intent.getParcelableArrayListExtra<QuizQuestion>("QUESTIONS_SO_FAR")
+        if (questions == null) {
+            questions = ArrayList() // Garante que não seja nula
+        }
 
         // --- 3. Encontrar os Botões e a Imagem ---
         val botaoVoltar = findViewById<ImageButton>(R.id.btnBack)
@@ -78,28 +79,31 @@ class CapturaImagemActivity : AppCompatActivity() {
 
         // Clique para VOLTAR
         botaoVoltar.setOnClickListener {
-            finish() // Fecha a tela atual e volta para a anterior
+            finish()
         }
 
         // Clique para PULAR ETAPA
         botaoPular.setOnClickListener {
-            // Navega para a próxima tela (AnalyzingActivity) sem uma foto
             val intent = Intent(this, AnalyzingActivity::class.java)
-            // Você pode querer "avisar" a próxima tela que o usuário pulou
-            // intent.putExtra("ETAPA_PULADA", true)
+
+            // 👈 3. PASSA A LISTA DE PERGUNTAS ADIANTE
+            intent.putParcelableArrayListExtra("QUESTIONS_SO_FAR", questions)
+            intent.putExtra("ETAPA_PULADA", true) // Avisa que não tem foto
+
             startActivity(intent)
         }
 
         // Clique para CONFIRMAR ANÁLISE
         botaoConfirmar.setOnClickListener {
-            // Só navega se o usuário tiver selecionado uma imagem
             if (imageUri != null) {
                 val intent = Intent(this, AnalyzingActivity::class.java)
-                // Adicione a Uri da imagem na Intent para a próxima tela processar
-                intent.data = imageUri
+
+                // 👈 4. PASSA A LISTA DE PERGUNTAS E A FOTO ADIANTE
+                intent.putParcelableArrayListExtra("QUESTIONS_SO_FAR", questions)
+                intent.data = imageUri // Adiciona a Uri da imagem
+
                 startActivity(intent)
             } else {
-                // Opcional: Mostrar um aviso se nenhuma foto foi selecionada
                 // Toast.makeText(this, "Por favor, envie uma foto", Toast.LENGTH_SHORT).show()
             }
         }
@@ -111,34 +115,29 @@ class CapturaImagemActivity : AppCompatActivity() {
     }
 
     // --- 5. Funções de Ação (Abaixo do onCreate) ---
-
     private fun mostrarDialogoEscolha() {
-        // Cria um pop-up de alerta
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Escolha uma opção")
         builder.setItems(arrayOf("Tirar Foto", "Escolher da Galeria")) { dialog, which ->
             when (which) {
-                0 -> abrirCamera() // "Tirar Foto"
-                1 -> abrirGaleria() // "Escolher da Galeria"
+                0 -> abrirCamera()
+                1 -> abrirGaleria()
             }
         }
         builder.show()
     }
 
     private fun abrirGaleria() {
-        // Lança o contrato da galeria, pedindo qualquer tipo de imagem
         galleryLauncher.launch("image/*")
     }
 
     private fun abrirCamera() {
-        // Cria um arquivo temporário para a câmera salvar a foto
         val file = File(cacheDir, "temp_image_${System.currentTimeMillis()}.jpg")
         imageUri = FileProvider.getUriForFile(
             this,
-            "${applicationContext.packageName}.provider", // Deve ser o mesmo "authorities" do Manifest
+            "${applicationContext.packageName}.provider",
             file
         )
-        // Lança o contrato da câmera, passando a Uri de onde salvar
         cameraLauncher.launch(imageUri)
     }
 }

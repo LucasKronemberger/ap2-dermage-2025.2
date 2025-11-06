@@ -4,7 +4,7 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
-// --- Modelos para a REQUISIÇÃO (o que ENVIAMOS) ---
+// o que enviamos
 
 @Parcelize
 data class QuizQuestion(
@@ -12,13 +12,12 @@ data class QuizQuestion(
     @SerializedName("answer") val answer: String
 ) : Parcelable
 
-data class CreateAnalysisRequest(
+data class SkinProfileRequest(
     @SerializedName("questions") val questions: List<QuizQuestion>,
-    @SerializedName("images") val images: List<String>,
     @SerializedName("others") val others: List<Map<String, String>>
 )
 
-// --- Modelos para a RESPOSTA (o que RECEBEMOS) ---
+// o que recebemos
 
 @Parcelize
 data class AnalysisResponse(

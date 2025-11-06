@@ -27,7 +27,7 @@ class QuestPreocupacaoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quest_preocupacao)
 
-        // --- 1. RECEBER OS DADOS DA TELA ANTERIOR ---
+        // --- RECEBER OS DADOS DA TELA ANTERIOR ---
         questions = intent.getParcelableArrayListExtra<QuizQuestion>("QUESTIONS_SO_FAR")
         if (questions == null) {
             questions = ArrayList()
@@ -59,23 +59,19 @@ class QuestPreocupacaoActivity : AppCompatActivity() {
 
             val selectedAnswers = mutableListOf<String>()
 
-            // 1. Verifica quais caixas estão marcadas e coleta o texto principal
             if (cbManchas.isChecked) selectedAnswers.add("Manchas")
             if (cbBrilho.isChecked) selectedAnswers.add("Falta de Brilho")
             if (cbPoros.isChecked) selectedAnswers.add("Poros dilatados")
             if (cbRugas.isChecked) selectedAnswers.add("Rugas/Linhas")
             if (cbAcne.isChecked) selectedAnswers.add("Acnes/Espinhas")
 
-            // 2. Junta a lista de respostas em uma única string
             val finalAnswer = selectedAnswers.joinToString(", ")
 
-            // 3. Adiciona a resposta à lista de perguntas
             questions?.add(QuizQuestion(thisQuestionText, finalAnswer))
 
-            //próxima tela
             val intent = Intent(this, QuestRotinaActivity::class.java)
 
-            // 4. PASSE A LISTA ATUALIZADA ADIANTE
+            // PASSE A LISTA ATUALIZADA ADIANTE
             intent.putParcelableArrayListExtra("QUESTIONS_SO_FAR", questions)
 
             startActivity(intent)
