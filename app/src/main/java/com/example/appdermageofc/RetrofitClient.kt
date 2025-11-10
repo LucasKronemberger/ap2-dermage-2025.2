@@ -16,15 +16,15 @@ object RetrofitClient {
 
     private val httpClient = OkHttpClient.Builder()
         .addInterceptor(logging)
-        .connectTimeout(60, TimeUnit.SECONDS) // 👈 AUMENTA TEMPO DE CONEXÃO
-        .readTimeout(60, TimeUnit.SECONDS)    // 👈 AUMENTA TEMPO DE LEITURA
-        .writeTimeout(60, TimeUnit.SECONDS)   // 👈 AUMENTA TEMPO DE ESCRITA
+        .connectTimeout(60, TimeUnit.SECONDS)
+        .readTimeout(60, TimeUnit.SECONDS)
+        .writeTimeout(60, TimeUnit.SECONDS)
         .build()
 
     val api: ApiService by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .client(httpClient) // Agora usa o cliente com os novos timeouts
+            .client(httpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiService::class.java)

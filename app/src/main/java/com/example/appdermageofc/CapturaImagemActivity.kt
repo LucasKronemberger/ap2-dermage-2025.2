@@ -11,6 +11,7 @@ import android.net.Uri
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.FileProvider
@@ -22,7 +23,7 @@ class CapturaImagemActivity : AppCompatActivity() {
     // Variável para guardar o caminho (Uri) da foto tirada pela câmera
     private var imageUri: Uri? = null
 
-    // 👈 1. VARIÁVEL PARA GUARDAR A CORRENTE DE PERGUNTAS
+    // 1. Variavel para guardar a corrente de perguntas
     private var questions: ArrayList<QuizQuestion>? = null
 
     // --- 1. Lançador da Galeria ---
@@ -63,37 +64,33 @@ class CapturaImagemActivity : AppCompatActivity() {
         }
         // --- FIM DO CÓDIGO DA TELA CHEIA ---
 
-        // 👈 2. RECEBE A LISTA DE PERGUNTAS DA TELA ANTERIOR
+        // recebe as perguntas anteriores
         questions = intent.getParcelableArrayListExtra<QuizQuestion>("QUESTIONS_SO_FAR")
         if (questions == null) {
             questions = ArrayList() // Garante que não seja nula
         }
 
-        // --- 3. Encontrar os Botões e a Imagem ---
+
         val botaoVoltar = findViewById<ImageButton>(R.id.btnBack)
         val botaoConfirmar = findViewById<MaterialButton>(R.id.btnConfirmar)
         val botaoPular = findViewById<TextView>(R.id.skipText)
         val imagemRosto = findViewById<ImageView>(R.id.fotoRosto)
 
-        // --- 4. Configurar os Cliques ---
-
-        // Clique para VOLTAR
         botaoVoltar.setOnClickListener {
             finish()
         }
 
-        // Clique para PULAR ETAPA
+
         botaoPular.setOnClickListener {
             val intent = Intent(this, AnalyzingActivity::class.java)
 
-            // 👈 3. PASSA A LISTA DE PERGUNTAS ADIANTE
             intent.putParcelableArrayListExtra("QUESTIONS_SO_FAR", questions)
             intent.putExtra("ETAPA_PULADA", true) // Avisa que não tem foto
 
             startActivity(intent)
         }
 
-        // Clique para CONFIRMAR ANÁLISE
+
         botaoConfirmar.setOnClickListener {
             if (imageUri != null) {
                 val intent = Intent(this, AnalyzingActivity::class.java)
@@ -104,17 +101,15 @@ class CapturaImagemActivity : AppCompatActivity() {
 
                 startActivity(intent)
             } else {
-                // Toast.makeText(this, "Por favor, envie uma foto", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Por favor, envie uma foto", Toast.LENGTH_SHORT).show()
             }
         }
 
-        // Clique no IMAGEVIEW para abrir a câmera/galeria
         imagemRosto.setOnClickListener {
             mostrarDialogoEscolha()
         }
     }
 
-    // --- 5. Funções de Ação (Abaixo do onCreate) ---
     private fun mostrarDialogoEscolha() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Escolha uma opção")

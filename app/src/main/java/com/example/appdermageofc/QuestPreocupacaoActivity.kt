@@ -71,7 +71,7 @@ class QuestPreocupacaoActivity : AppCompatActivity() {
 
             val intent = Intent(this, QuestRotinaActivity::class.java)
 
-            // PASSE A LISTA ATUALIZADA ADIANTE
+            // passa a lista para proxima activ
             intent.putParcelableArrayListExtra("QUESTIONS_SO_FAR", questions)
 
             startActivity(intent)
