@@ -10,16 +10,13 @@ import retrofit2.http.Part
 interface ApiService {
 
     @Multipart
-    @POST("/analyze") // <-- CORREÇÃO 1: Adicionada a barra "/"
+    @POST("/analyze") // end analise
     suspend fun createAnalysis(
-        // CORREÇÃO 2: A API espera "multipart/form-data"
 
-        // As perguntas e outros dados vão como um campo de formulário
+        // form
         @Part("skinData") skinData: RequestBody,
 
-        // Os arquivos de imagem vão como outro campo
-        // O nome "images" DEVE ser o mesmo do Python
         @Part images: List<MultipartBody.Part>
 
-    ): Response<AnalysisResponse> // A resposta continua a mesma
+    ): Response<AnalysisResponse>
 }
