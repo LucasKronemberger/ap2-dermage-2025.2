@@ -11,6 +11,7 @@
     tools:context=".ResultadoActivity">
 
     <LinearLayout
+        android:id="@+id/main_content_wrapper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -32,6 +33,7 @@
             android:paddingBottom="24dp">
 
             <TextView
+                android:id="@+id/tv_titulo_resultado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sabrina, aqui estão seus resultados."
@@ -42,72 +44,86 @@
                 android:textAlignment="center"/>
 
             <TextView
+                android:id="@+id/label_acne"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pele Seca"
+                android:text="Acne"
                 android:layout_marginTop="32dp"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:fontFamily="@font/cambay_regular"/>
             <SeekBar
+                android:id="@+id/slider_acne"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:progress="30"/>
+                android:max="100"/>
 
             <TextView
+                android:id="@+id/label_hidratacao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Área dos Olhos"
+                android:text="Hidratação"
                 android:layout_marginTop="16dp"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:fontFamily="@font/cambay_regular"/>
             <SeekBar
+                android:id="@+id/slider_hidratacao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:progress="20"/>
+                android:max="100"/>
 
             <TextView
+                android:id="@+id/label_manchas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Desidratação"
+                android:text="Manchas"
                 android:layout_marginTop="16dp"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:fontFamily="@font/cambay_regular"/>
             <SeekBar
+                android:id="@+id/slider_manchas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:progress="15"/>
+                android:max="100"/>
+
             <TextView
+                android:id="@+id/label_rugas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Acne"
+                android:text="Rugas"
                 android:layout_marginTop="16dp"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:fontFamily="@font/cambay_regular"/>
             <SeekBar
+                android:id="@+id/slider_rugas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:progress="35"/>
+                android:max="100"/>
             <TextView
+                android:id="@+id/label_poros"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Linhas Finas"
+                android:text="Poros"
                 android:layout_marginTop="16dp"
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:fontFamily="@font/cambay_regular"/>
             <SeekBar
+                android:id="@+id/slider_poros"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:progress="40"/>
+                android:max="100"/>
+
+
+
 
             <View android:layout_width="match_parent" android:layout_height="24dp" />
             <androidx.cardview.widget.CardView
@@ -116,10 +132,11 @@
                 app:cardCornerRadius="8dp"
                 app:cardBackgroundColor="#F0F0F0">
                 <TextView
+                    android:id="@+id/tv_concerns"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
-                    android:text="PRINCIPAIS PREOCUPAÇÕES\nNossos especialistas indicam que para o seu tipo de pele é ideal que você utilize produtos para pele oleosa e com acne."
+                    tools:text="PRINCIPAIS PREOCUPAÇÕES..."
                     android:textColor="@android:color/black"
                     android:fontFamily="@font/cambay_regular"/>
             </androidx.cardview.widget.CardView>
@@ -136,6 +153,7 @@
                 android:textColor="@android:color/black"
                 android:fontFamily="@font/cambay_bold"/>
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -143,6 +161,7 @@
                 android:gravity="center_horizontal"
                 android:layout_marginTop="24dp">
                 <Button
+                    android:id="@+id/btn_comprar_rotina"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="200dp"
@@ -151,6 +170,7 @@
                     android:textColor="@android:color/white"
                     android:fontFamily="@font/cambay_bold"/>
                 <Button
+                    android:id="@+id/btn_home"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="200dp"
@@ -172,6 +192,7 @@
                 android:fontFamily="@font/cambay_bold"
                 android:layout_marginTop="60dp"/>
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -179,6 +200,7 @@
                 android:gravity="center"
                 android:layout_marginTop="24dp">
                 <Button
+                    android:id="@+id/btn_manha"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -188,517 +210,38 @@
                     app:strokeColor="@android:color/darker_gray"
                     app:strokeWidth="1dp"
                     android:drawableStart="@drawable/ic_sun"
-                    android:drawablePadding="8dp"
                     android:fontFamily="@font/cambay_bold"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
                     android:layout_marginEnd="8dp"/>
                 <Button
+                    android:id="@+id/btn_noite"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="NOITE"
                     android:textColor="@android:color/white"
-                    android:backgroundTint="#FF69B4"
+                    android:backgroundTint="@color/dermage_pink"
                     android:drawableStart="@drawable/ic_moon"
-                    android:drawablePadding="8dp"
                     android:fontFamily="@font/cambay_bold"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
                     android:layout_marginStart="8dp"/>
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Passo 1"
-                android:layout_marginTop="24dp"
-                android:textStyle="bold"
-                android:textSize="22sp"
-                android:textColor="@android:color/black"
-                android:fontFamily="@font/cambay_bold"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="LIMPEZA"
-                android:textSize="18sp"
-                android:textColor="@android:color/black"
-                android:fontFamily="@font/cambay_regular"
-                android:layout_marginBottom="16dp"/>
+
             <LinearLayout
+                android:id="@+id/container_rotina_manha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_orange_background"
                 android:orientation="vertical"
-                android:padding="8dp"
-                android:layout_marginBottom="-4dp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="INDICAÇÃO: Pele Seca"
-                    android:textColor="@android:color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/cambay_bold"
-                    android:textAlignment="center"/>
-            </LinearLayout>
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp"
-                app:cardUseCompatPadding="false"
-                app:cardPreventCornerOverlap="false"
-                android:layout_marginBottom="16dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                        android:paddingTop="16dp"
-                        android:paddingBottom="8dp">
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Photoage Stick Color FPS\n99"
-                                android:textStyle="bold"
-                                android:textSize="20sp"
-                                android:textColor="@android:color/black"
-                                android:fontFamily="@font/cambay_bold"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="★★★★☆ (288)"
-                                android:textColor="@android:color/darker_gray"
-                                android:textSize="14sp"
-                                android:layout_marginTop="4dp"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="Seu novo filtro solar com máxima proteção e cobertura de base! Com FPS99, máxima proteção solar disponível no mercado brasileiro e FPUVA 35"
-                                android:fontFamily="@font/cambay_regular"
-                                android:textColor="@android:color/black"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="16 g"
-                                android:fontFamily="@font/cambay_regular"
-                                android:textColor="@android:color/black"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="R$ 119,92"
-                                android:textStyle="bold"
-                                android:textSize="18sp"
-                                android:textColor="#FF9800"
-                                android:fontFamily="@font/cambay_bold"/>
-                        </LinearLayout>
-                        <ImageView
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/produto1"
-                            android:scaleType="centerInside"
-                            android:layout_marginStart="16dp"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="16dp">
-                        <Button
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="VER MAIS"
-                            android:textColor="@android:color/darker_gray"
-                            android:backgroundTint="@android:color/white"
-                            app:strokeColor="@android:color/darker_gray"
-                            app:strokeWidth="1dp"
-                            android:fontFamily="@font/cambay_bold"
-                            style="?attr/materialButtonOutlinedStyle"/>
-                        <Button
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="COMPRAR"
-                            android:backgroundTint="#FF9800"
-                            android:textColor="@android:color/white"
-                            android:fontFamily="@font/cambay_bold"
-                            android:drawableStart="@drawable/ic_shopping_cart"
-                            android:drawableTint="@android:color/white"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp">
-                <View
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
-                    android:background="@drawable/circle_black"
-                    android:layout_marginEnd="8dp"/>
-                <View
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
-                    android:background="@drawable/circle_light_gray"/>
-            </LinearLayout>
+                android:visibility="visible" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Passo 2"
-                android:layout_marginTop="24dp"
-                android:textStyle="bold"
-                android:textSize="22sp"
-                android:textColor="@android:color/black"
-                android:fontFamily="@font/cambay_bold"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PROTEÇÃO"
-                android:textSize="18sp"
-                android:textColor="@android:color/black"
-                android:fontFamily="@font/cambay_regular"
-                android:layout_marginBottom="16dp"/>
             <LinearLayout
+                android:id="@+id/container_rotina_noite"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_orange_background"
                 android:orientation="vertical"
-                android:padding="8dp"
-                android:layout_marginBottom="-4dp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="INDICAÇÃO: Pele Seca"
-                    android:textColor="@android:color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/cambay_bold"
-                    android:textAlignment="center"/>
-            </LinearLayout>
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp"
-                app:cardUseCompatPadding="false"
-                app:cardPreventCornerOverlap="false"
-                android:layout_marginBottom="16dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                        android:paddingTop="16dp"
-                        android:paddingBottom="8dp">
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Compose Mousse"
-                                android:textStyle="bold"
-                                android:textSize="20sp"
-                                android:textColor="@android:color/black"
-                                android:fontFamily="@font/cambay_bold"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="★★★★★ (1893)"
-                                android:textColor="#FF9800"
-                                android:textSize="14sp"
-                                android:layout_marginTop="4dp"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="A Compose Mousse é uma espuma de limpeza facial que limpa suavemente a pele enquanto atua como antioxidante. Com textura..."
-                                android:fontFamily="@font/cambay_regular"
-                                android:textColor="@android:color/black"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="16 g"
-                                android:fontFamily="@font/cambay_regular"
-                                android:textColor="@android:color/black"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="R$ 96,75"
-                                android:textStyle="bold"
-                                android:textSize="18sp"
-                                android:textColor="#FF9800"
-                                android:fontFamily="@font/cambay_bold"/>
-                        </LinearLayout>
-                        <ImageView
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/produto2"
-                            android:scaleType="centerInside"
-                            android:layout_marginStart="16dp"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="16dp">
-                        <Button
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="VER MAIS"
-                            android:textColor="@android:color/darker_gray"
-                            android:backgroundTint="@android:color/white"
-                            app:strokeColor="@android:color/darker_gray"
-                            app:strokeWidth="1dp"
-                            android:fontFamily="@font/cambay_bold"
-                            style="?attr/materialButtonOutlinedStyle"/>
-                        <Button
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="COMPRAR"
-                            android:backgroundTint="#FF9800"
-                            android:textColor="@android:color/white"
-                            android:fontFamily="@font/cambay_bold"
-                            android:drawableStart="@drawable/ic_shopping_cart"
-                            android:drawableTint="@android:color/white"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp">
-                <View
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
-                    android:background="@drawable/circle_black"
-                    android:layout_marginEnd="8dp"/>
-                <View
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
-                    android:background="@drawable/circle_light_gray"/>
-            </LinearLayout>
+                android:visibility="gone" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Passo 3"
-                android:layout_marginTop="24dp"
-                android:textStyle="bold"
-                android:textSize="22sp"
-                android:textColor="@android:color/black"
-                android:fontFamily="@font/cambay_bold"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TRATAMENTO"
-                android:textSize="18sp"
-                android:textColor="@android:color/black"
-                android:fontFamily="@font/cambay_regular"
-                android:layout_marginBottom="16dp"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_orange_background"
-                android:orientation="vertical"
-                android:padding="8dp"
-                android:layout_marginBottom="-4dp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="INDICAÇÃO: Pele Seca"
-                    android:textColor="@android:color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/cambay_bold"
-                    android:textAlignment="center"/>
-            </LinearLayout>
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp"
-                app:cardUseCompatPadding="false"
-                app:cardPreventCornerOverlap="false"
-                android:layout_marginBottom="16dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                        android:paddingTop="16dp"
-                        android:paddingBottom="8dp">
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Secatriz Acne Spot"
-                                android:textStyle="bold"
-                                android:textSize="20sp"
-                                android:textColor="@android:color/black"
-                                android:fontFamily="@font/cambay_bold"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="★★★★★ (1892)"
-                                android:textColor="#FF9800"
-                                android:textSize="14sp"
-                                android:layout_marginTop="4dp"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="Gel secativo com resultados visíveis em apenas 24 horas*, Secatriz Acne Spot auxilia na redução de comedões, acne (popularmente conhecida como espinha) e pontos negros..."
-                                android:fontFamily="@font/cambay_regular"
-                                android:textColor="@android:color/black"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="16 g"
-                                android:fontFamily="@font/cambay_regular"
-                                android:textColor="@android:color/black"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="R$ 74,92"
-                                android:textStyle="bold"
-                                android:textSize="18sp"
-                                android:textColor="#FF9800"
-                                android:fontFamily="@font/cambay_bold"/>
-                        </LinearLayout>
-                        <ImageView
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/produto3"
-                            android:scaleType="centerInside"
-                            android:layout_marginStart="16dp"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="16dp">
-                        <Button
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="VER MAIS"
-                            android:textColor="@android:color/darker_gray"
-                            android:backgroundTint="@android:color/white"
-                            app:strokeColor="@android:color/darker_gray"
-                            app:strokeWidth="1dp"
-                            android:fontFamily="@font/cambay_bold"
-                            style="?attr/materialButtonOutlinedStyle"/>
-                        <Button
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="COMPRAR"
-                            android:backgroundTint="#FF9800"
-                            android:textColor="@android:color/white"
-                            android:fontFamily="@font/cambay_bold"
-                            android:drawableStart="@drawable/ic_shopping_cart"
-                            android:drawableTint="@android:color/white"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp">
-                <View
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
-                    android:background="@drawable/circle_black"
-                    android:layout_marginEnd="8dp"/>
-                <View
-                    android:layout_width="10dp"
-                    android:layout_height="10dp"
-                    android:background="@drawable/circle_light_gray"/>
-            </LinearLayout>
-
-            <View android:layout_width="match_parent" android:layout_height="60dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Ganhe 15 % nas compras acima\nde R$200"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:textColor="@android:color/black"
-                android:fontFamily="@font/cambay_bold"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_horizontal"
-                android:layout_marginTop="24dp">
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:minWidth="200dp"
-                    android:text="COMPRAR ROTINA"
-                    android:backgroundTint="#FF9800"
-                    android:textColor="@android:color/white"
-                    android:fontFamily="@font/cambay_bold"/>
-            </LinearLayout>
         </LinearLayout>
 
         <ImageView
