@@ -80,18 +80,11 @@ class CapturaImagemActivity : AppCompatActivity() {
         // --- Encontrar os Botões ---
         val botaoVoltar = findViewById<ImageButton>(R.id.btnBack)
         val botaoConfirmar = findViewById<MaterialButton>(R.id.btnConfirmar)
-        val botaoPular = findViewById<TextView>(R.id.skipText)
         val imagemRosto = findViewById<ImageView>(R.id.fotoRosto)
 
         // --- Configurar Cliques ---
         botaoVoltar.setOnClickListener { finish() }
 
-        botaoPular.setOnClickListener {
-            val intent = Intent(this, AnalyzingActivity::class.java)
-            intent.putParcelableArrayListExtra("QUESTIONS_SO_FAR", questions)
-            intent.putExtra("ETAPA_PULADA", true)
-            startActivity(intent)
-        }
 
         botaoConfirmar.setOnClickListener {
             if (imageUri != null) {
