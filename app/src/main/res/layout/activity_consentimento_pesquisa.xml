@@ -19,9 +19,10 @@
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.355" />
+        app:layout_constraintVertical_bias="0.295" />
 
     <TextView
         android:id="@+id/respondaAlgumasPerguntas"
@@ -34,9 +35,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/estamosQuaseLa"
-        app:layout_constraintVertical_bias="0.037" />
+        app:layout_constraintVertical_bias="0.031" />
 
     <LinearLayout
         android:id="@+id/bottom_section"
@@ -91,6 +93,17 @@
             android:backgroundTint="@color/white"
             android:text="CONCORDO"
             android:textColor="@color/black"
+            android:textSize="16sp"
+            android:fontFamily="@font/cambay_bold"/>
+
+        <Button
+            android:id="@+id/btn_voltar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@android:color/white"
+            android:text="DISCORDO"
+            android:textColor="@android:color/black"
             android:textSize="16sp"
             android:fontFamily="@font/cambay_bold"/>
 
