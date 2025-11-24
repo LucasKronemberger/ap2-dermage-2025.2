@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -33,18 +34,19 @@
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:background="?attr/selectableItemBackgroundBorderless"
-        app:layout_constraintBottom_toTopOf="@+id/barraProgress"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ondalaranja"
         app:srcCompat="@drawable/setaback" />
 
     <TextView
-        android:id="@+id/contador4de6"
+        android:id="@+id/contador1de5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="1 de 5"
-        android:textSize="12dp"
+        android:text="1 de 7"
+        android:textSize="12sp"
+        android:fontFamily="@font/roboto_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.962"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +54,7 @@
 
     <ImageView
         android:id="@+id/progressBar"
-        android:layout_width="363dp"
+        android:layout_width="0dp"
         android:layout_height="6dp"
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="52dp"
@@ -63,32 +65,43 @@
         app:srcCompat="@drawable/progressbar" />
 
     <ImageView
-        android:id="@+id/barraProgress"
-        android:layout_width="wrap_content"
+        android:id="@+id/barraProgressAtual"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/progressBar"
+        app:layout_constraintEnd_toEndOf="@+id/progressBar"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/progressBar"
         app:layout_constraintTop_toTopOf="@+id/progressBar"
+        app:layout_constraintWidth_percent="0.14"
         app:srcCompat="@drawable/barraprogresso" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/playfairbold"
-        android:text="Como você classificaria sua pele?"
-        android:textSize="26dp"
         android:layout_marginTop="32dp"
+        android:layout_marginHorizontal="24dp"
+        android:gravity="center"
+        android:text="Como você classificaria sua pele?"
+        android:textSize="26sp"
+        android:fontFamily="@font/roboto_bold"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
     <TextView
         android:id="@+id/peledescricao2"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="24dp"
+        android:gravity="center"
         android:text="Selecione a que melhor se aplica"
         android:textColor="#808080"
-        android:layout_marginTop="8dp"
+        android:textSize="14sp"
+        android:fontFamily="@font/roboto_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -153,7 +166,8 @@
                         android:textSize="16sp"
                         android:text="Pele Normal"
                         android:textAlignment="center"
-                        android:textStyle="bold" />
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -162,7 +176,8 @@
                         android:text="Apresenta equilíbrio entre oleosidade e hidratação, com textura uniforme e maciez."
                         android:textAlignment="center"
                         android:textColor="#666666"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:fontFamily="@font/roboto_regular" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -199,7 +214,8 @@
                         android:textAlignment="center"
                         android:textSize="16sp"
                         android:text="Pele Oleosa"
-                        android:textStyle="bold" />
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -208,7 +224,8 @@
                         android:textAlignment="center"
                         android:text="Produz maior quantidade de sebo, resultando em brilho excessivo e poros dilatados."
                         android:textColor="#666666"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:fontFamily="@font/roboto_regular" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -245,7 +262,8 @@
                         android:textSize="16sp"
                         android:textAlignment="center"
                         android:text="Pele Seca"
-                        android:textStyle="bold" />
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -254,7 +272,8 @@
                         android:textAlignment="center"
                         android:text="Produz menos oleosidade natural, tende a repuxar e apresentar descamações."
                         android:textColor="#666666"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:fontFamily="@font/roboto_regular" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -291,7 +310,8 @@
                         android:textAlignment="center"
                         android:textSize="16sp"
                         android:text="Pele Mista"
-                        android:textStyle="bold" />
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -300,7 +320,8 @@
                         android:textAlignment="center"
                         android:text="Apresenta áreas oleosas (zona T) e outras mais secas ou normais."
                         android:textColor="#666666"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:fontFamily="@font/roboto_regular" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -309,7 +330,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnProxima2"
-        android:layout_width="363dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginHorizontal="24dp"
         android:layout_marginBottom="32dp"
@@ -317,7 +338,7 @@
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="18dp"
-        android:textStyle="bold"
+        android:fontFamily="@font/roboto_bold"
         app:backgroundTint="#F39A08"
         app:cornerRadius="24dp"
         app:layout_constraintBottom_toBottomOf="parent"

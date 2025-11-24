@@ -1,6 +1,7 @@
 package com.example.appdermageofc
 
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -12,49 +13,29 @@ import android.widget.LinearLayout
 import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import java.util.Locale
 
 class ResultadoActivity : AppCompatActivity() {
 
-
+    // Componentes de Layout
     private lateinit var containerManha: LinearLayout
     private lateinit var containerNoite: LinearLayout
+    private lateinit var btnManha: MaterialButton
+    private lateinit var btnNoite: MaterialButton
 
-    private lateinit var btnManha: Button
-    private lateinit var btnNoite: Button
-    private var corFundoAtivo: Int = 0
-    private var corFundoInativo: Int = 0
-    private var corTextoAtivo: Int = 0
-    private var corTextoInativo: Int = 0
-    private var corBordaInativa: Int = 0
-    private var corRosa: Int = 0
+    // Cores (Definidas no código para facilitar a alternância)
+    private val corLaranja = Color.parseColor("#F39A08")
+    private val corBranca = Color.WHITE
+    private val corFundoInativo = Color.parseColor("#F0F0F0")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_resultado)
 
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            val contentWrapper = v.findViewById<LinearLayout>(R.id.main_content_wrapper)
-            contentWrapper.setPadding(
-                contentWrapper.paddingLeft,
-                systemBars.top,
-                contentWrapper.paddingRight,
-                systemBars.bottom
-            )
-            WindowInsetsCompat.CONSUMED
-        }
-
-
+        // 1. Receber Dados da API
         val result = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             intent.getParcelableExtra("ANALYSIS_RESULT", AnalysisResponse::class.java)
         } else {
@@ -62,182 +43,177 @@ class ResultadoActivity : AppCompatActivity() {
             intent.getParcelableExtra<AnalysisResponse>("ANALYSIS_RESULT")
         }
 
-
+        // 2. Vincular Componentes
         val tvTituloResultado = findViewById<TextView>(R.id.tv_titulo_resultado)
         val tvConcerns = findViewById<TextView>(R.id.tv_concerns)
-        val btnHome = findViewById<Button>(R.id.btn_home)
+        val btnHome = findViewById<MaterialButton>(R.id.btn_home)
+        val btnComprar = findViewById<MaterialButton>(R.id.btn_comprar_rotina)
 
-
-        val sliderAcne = findViewById<SeekBar>(R.id.slider_acne)
-        val sliderHidratacao = findViewById<SeekBar>(R.id.slider_hidratacao)
-        val sliderManchas = findViewById<SeekBar>(R.id.slider_manchas)
-        val sliderRugas = findViewById<SeekBar>(R.id.slider_rugas)
-        val sliderPoros = findViewById<SeekBar>(R.id.slider_poros)
-
-
-        val labelAcne = findViewById<TextView>(R.id.label_acne)
-        val labelHidratacao = findViewById<TextView>(R.id.label_hidratacao)
-        val labelManchas = findViewById<TextView>(R.id.label_manchas)
-        val labelRugas = findViewById<TextView>(R.id.label_rugas)
-        val labelPoros = findViewById<TextView>(R.id.label_poros)
-
-
+        // Containers e Abas
         containerManha = findViewById(R.id.container_rotina_manha)
         containerNoite = findViewById(R.id.container_rotina_noite)
         btnManha = findViewById(R.id.btn_manha)
         btnNoite = findViewById(R.id.btn_noite)
 
-
-        corFundoAtivo = ContextCompat.getColor(this, R.color.white)
-        corTextoAtivo = ContextCompat.getColor(this, R.color.black)
-        corFundoInativo = ContextCompat.getColor(this, R.color.white)
-        corTextoInativo = ContextCompat.getColor(this, R.color.dermage_gray)
-        corBordaInativa = ContextCompat.getColor(this, R.color.card_border_gray)
-        corRosa = ContextCompat.getColor(this, R.color.dermage_pink)
-
-
+        // 3. Preencher Dados na Tela
         if (result != null) {
 
+            // Texto de Diagnóstico
+            tvConcerns.text = "Diagnóstico: ${result.concerns}\n\nRecomendamos a rotina abaixo para equilibrar sua pele."
 
-            tvConcerns.text = "PRINCIPAIS PREOCUPAÇÕES\n${result.concerns}"
+            // Popular Sliders (Notas)
+            popularSlider(findViewById(R.id.slider_acne), result.scores, "Acne")
+            popularSlider(findViewById(R.id.slider_hidratacao), result.scores, "Hidratação")
+            popularSlider(findViewById(R.id.slider_manchas), result.scores, "Manchas")
+            popularSlider(findViewById(R.id.slider_rugas), result.scores, "Rugas")
+            popularSlider(findViewById(R.id.slider_poros), result.scores, "Poros")
 
-            popularSlider(sliderAcne, labelAcne, result.scores, "Acne")
-            popularSlider(sliderHidratacao, labelHidratacao, result.scores, "Hidratação")
-            popularSlider(sliderManchas, labelManchas, result.scores, "Manchas")
-            popularSlider(sliderRugas, labelRugas, result.scores, "Rugas")
-            popularSlider(sliderPoros, labelPoros, result.scores, "Poros")
-
-
+            // Limpar containers antes de adicionar
             containerManha.removeAllViews()
             containerNoite.removeAllViews()
 
-
+            // Popular Listas de Produtos
             popularRotina(containerManha, result.routine.morning, "MANHÃ")
             popularRotina(containerNoite, result.routine.night, "NOITE")
 
-
+            // Configurar botões de aba
             setupTabs()
 
-            mostrarRotinaManha()
+            // Iniciar na aba Manhã
+            atualizarAbas(ehManha = true)
 
         } else {
-
-            tvTituloResultado.text = "Erro ao carregar resultados"
-            tvConcerns.text = "Não foi possível carregar a análise. Tente novamente."
+            tvTituloResultado.text = "Erro na Análise"
+            tvConcerns.text = "Não foi possível carregar seus resultados. Tente novamente."
         }
 
-
+        // 4. Botão Voltar para Home
         btnHome.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
+
+        // Botão Comprar (Link Genérico ou Específico)
+        btnComprar.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.dermage.com.br/"))
+            startActivity(intent)
+        }
     }
 
+    // --- LÓGICA DE ABAS ---
+    private fun setupTabs() {
+        btnManha.setOnClickListener { atualizarAbas(ehManha = true) }
+        btnNoite.setOnClickListener { atualizarAbas(ehManha = false) }
+    }
 
-    private fun popularSlider(seekBar: SeekBar, label: TextView, scores: List<SkinScore>, tagName: String) {
+    private fun atualizarAbas(ehManha: Boolean) {
+        if (ehManha) {
+            // Visual Manhã ATIVO
+            containerManha.visibility = View.VISIBLE
+            containerNoite.visibility = View.GONE
 
-        val score = scores.find { it.scoreTag.equals(tagName, ignoreCase = true) }
+            // Estilo Manhã (Preenchido)
+            btnManha.setBackgroundColor(corLaranja)
+            btnManha.setTextColor(corBranca)
+            btnManha.strokeWidth = 0
+
+            // Estilo Noite (Borda)
+            btnNoite.setBackgroundColor(corFundoInativo)
+            btnNoite.setTextColor(corLaranja)
+            btnNoite.setStrokeColor(android.content.res.ColorStateList.valueOf(corLaranja))
+            btnNoite.strokeWidth = 3 // Borda visível
+        } else {
+            // Visual Noite ATIVO
+            containerManha.visibility = View.GONE
+            containerNoite.visibility = View.VISIBLE
+
+            // Estilo Manhã (Borda)
+            btnManha.setBackgroundColor(corFundoInativo)
+            btnManha.setTextColor(corLaranja)
+            btnManha.setStrokeColor(android.content.res.ColorStateList.valueOf(corLaranja))
+            btnManha.strokeWidth = 3
+
+            // Estilo Noite (Preenchido)
+            btnNoite.setBackgroundColor(corLaranja)
+            btnNoite.setTextColor(corBranca)
+            btnNoite.strokeWidth = 0
+        }
+    }
+
+    // --- LÓGICA DE DADOS ---
+    private fun popularSlider(seekBar: SeekBar, scores: List<SkinScore>, tagName: String) {
+        // Procura a nota na lista que veio da API
+        val score = scores.find { it.scoreTag.contains(tagName, ignoreCase = true) }
 
         if (score != null) {
+            // A API geralmente retorna 0.0 a 10.0 ou 0 a 100
+            // Assumindo que o SeekBar max é 100
+            var valor = score.scoreNumber
+            if (valor <= 10) valor *= 10 // Ajuste de escala se vier pequeno
 
-            seekBar.progress = (score.scoreNumber * 10).toInt()
+            seekBar.progress = valor.toInt()
         } else {
-
-            label.visibility = View.GONE
-            seekBar.visibility = View.GONE
+            // Se não achar, deixa zerado ou esconde
+            seekBar.progress = 0
         }
-
+        // Trava o slider para o usuário não mexer
         seekBar.isEnabled = false
     }
 
-    private fun setupTabs() {
-        btnManha.setOnClickListener { mostrarRotinaManha() }
-        btnNoite.setOnClickListener { mostrarRotinaNoite() }
-    }
-
-    private fun mostrarRotinaManha() {
-        containerManha.visibility = View.VISIBLE
-        containerNoite.visibility = View.GONE
-
-        btnManha.setBackgroundColor(corFundoAtivo)
-        btnManha.setTextColor(corTextoAtivo)
-        (btnManha as MaterialButton).strokeWidth = 2
-        (btnManha as MaterialButton).strokeColor = ContextCompat.getColorStateList(this, R.color.black)
-
-        btnNoite.setBackgroundColor(corRosa)
-        btnNoite.setTextColor(corFundoAtivo) // Texto branco
-        (btnNoite as MaterialButton).strokeWidth = 0
-    }
-
-    private fun mostrarRotinaNoite() {
-        containerManha.visibility = View.GONE
-        containerNoite.visibility = View.VISIBLE
-
-        btnNoite.setBackgroundColor(corRosa)
-        btnNoite.setTextColor(corFundoAtivo)
-        (btnNoite as MaterialButton).strokeWidth = 0
-
-        btnManha.setBackgroundColor(corFundoInativo)
-        btnManha.setTextColor(corTextoInativo)
-        (btnManha as MaterialButton).strokeWidth = 1
-        (btnManha as MaterialButton).strokeColor = ContextCompat.getColorStateList(this, R.color.card_border_gray)
-    }
-
-    private fun popularRotina(container: LinearLayout, produtos: List<SkinCareProduct>, passoTitulo: String) {
+    private fun popularRotina(container: LinearLayout, produtos: List<SkinCareProduct>, periodo: String) {
         val inflater = LayoutInflater.from(this)
 
         if (produtos.isEmpty()) {
-            val noProductView = TextView(this)
-            noProductView.text = "Nenhum produto recomendado para a rotina da ${passoTitulo.lowercase(Locale.ROOT)}."
-            noProductView.setPadding(0, 32, 0, 32)
-            noProductView.gravity = View.TEXT_ALIGNMENT_CENTER
-            container.addView(noProductView)
+            val tvVazio = TextView(this)
+            tvVazio.text = "Nenhum produto específico para $periodo."
+            tvVazio.setPadding(16, 32, 16, 32)
+            container.addView(tvVazio)
             return
         }
 
-
         produtos.forEachIndexed { index, produto ->
-            val passoView = TextView(this)
-            passoView.text = "Passo ${index + 1}"
-            passoView.setTextAppearance(com.google.android.material.R.style.TextAppearance_MaterialComponents_Headline6)
-            passoView.setPadding(0, 24, 0, 8)
-            container.addView(passoView)
-
-            val productView = inflater.inflate(R.layout.item_produto_resultado, container, false)
+            // Infla o layout do item (item_produto_resultado.xml)
+            // Certifique-se que você tem esse arquivo XML
+            val itemView = inflater.inflate(R.layout.item_produto_resultado, container, false)
 
 
-            val tvTitulo = productView.findViewById<TextView>(R.id.tv_produto_titulo)
-            val tvDesc = productView.findViewById<TextView>(R.id.tv_produto_desc)
-            val tvPreco = productView.findViewById<TextView>(R.id.tv_produto_preco)
-            val ivImagem = productView.findViewById<ImageView>(R.id.iv_produto_imagem)
-            val btnComprar = productView.findViewById<Button>(R.id.btn_comprar)
-            val btnVerMais = productView.findViewById<Button>(R.id.btn_ver_mais)
+            val tvTitulo = itemView.findViewById<TextView>(R.id.tv_produto_titulo)
+            val tvDesc = itemView.findViewById<TextView>(R.id.tv_produto_desc)
+            val tvPreco = itemView.findViewById<TextView>(R.id.tv_produto_preco)
+            val ivImagem = itemView.findViewById<ImageView>(R.id.iv_produto_imagem)
+            val btnVerMais = itemView.findViewById<Button>(R.id.btn_ver_mais)
 
+            // Preenche os dados
+            // Verifica se o ID tv_produto_passo existe no seu XML do item, se não, remove essa linha
 
             tvTitulo.text = produto.title
             tvDesc.text = produto.description
-            tvPreco.text = "R$ ${"%.2f".format(produto.price).replace(".", ",")}"
 
+            // Formatação de preço segura
+            val precoFormatado = try {
+                "R$ ${"%.2f".format(produto.price).replace(".", ",")}"
+            } catch (e: Exception) { "R$ ${produto.price}" }
+            tvPreco.text = precoFormatado
 
+            // Carrega imagem com Glide
             Glide.with(this)
                 .load(produto.imageUrl)
+                .placeholder(R.drawable.dermagelogotype) // Imagem enquanto carrega
+                .error(R.drawable.dermagelogotype) // Imagem se der erro
                 .into(ivImagem)
 
-
-            val linkClickListener = View.OnClickListener {
-                try {
+            // Clique no botão do produto
+            btnVerMais.setOnClickListener {
+                if (!produto.link.isNullOrEmpty()) {
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(produto.link))
                     startActivity(intent)
-                } catch (e: Exception) {
-                    Toast.makeText(this, "Não foi possível abrir o link", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Produto indisponível no site", Toast.LENGTH_SHORT).show()
                 }
             }
-            btnComprar.setOnClickListener(linkClickListener)
-            btnVerMais.setOnClickListener(linkClickListener)
 
-
-            container.addView(productView)
+            container.addView(itemView)
         }
     }
 }

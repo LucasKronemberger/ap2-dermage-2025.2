@@ -1,230 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="@color/white"
+    android:background="@drawable/fundobranco"
     tools:context=".ResultadoActivity">
 
     <LinearLayout
         android:id="@+id/main_content_wrapper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="32dp">
 
-        <ImageView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:scaleType="fitStart"
-            android:src="@drawable/header_topo" />
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/ondalaranja"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/onda_laranjatopo" />
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="180dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="@+id/ondalaranja"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/dermagelogotype" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp"
-            android:paddingTop="24dp"
-            android:paddingBottom="24dp">
+            android:paddingHorizontal="24dp"
+            android:paddingTop="16dp">
 
             <TextView
                 android:id="@+id/tv_titulo_resultado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sabrina, aqui estão seus resultados."
+                android:text="Aqui estão seus resultados!"
                 android:textSize="24sp"
-                android:textStyle="bold"
                 android:textColor="@android:color/black"
-                android:fontFamily="@font/cambay_bold"
+                android:fontFamily="@font/roboto_bold"
                 android:textAlignment="center"/>
 
             <TextView
-                android:id="@+id/label_acne"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="Acne"
-                android:layout_marginTop="32dp"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:fontFamily="@font/cambay_regular"/>
+                android:layout_marginTop="24dp"
+                style="@style/LabelResultado"/>
             <SeekBar
                 android:id="@+id/slider_acne"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:max="100"/>
+                style="@style/SeekBarResultado"/>
 
             <TextView
-                android:id="@+id/label_hidratacao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="Hidratação"
-                android:layout_marginTop="16dp"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:fontFamily="@font/cambay_regular"/>
+                android:layout_marginTop="12dp"
+                style="@style/LabelResultado"/>
             <SeekBar
                 android:id="@+id/slider_hidratacao"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:max="100"/>
+                style="@style/SeekBarResultado"/>
 
             <TextView
-                android:id="@+id/label_manchas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="Manchas"
-                android:layout_marginTop="16dp"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:fontFamily="@font/cambay_regular"/>
+                android:layout_marginTop="12dp"
+                style="@style/LabelResultado"/>
             <SeekBar
                 android:id="@+id/slider_manchas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:max="100"/>
+                style="@style/SeekBarResultado"/>
 
             <TextView
-                android:id="@+id/label_rugas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="Rugas"
-                android:layout_marginTop="16dp"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:fontFamily="@font/cambay_regular"/>
+                android:layout_marginTop="12dp"
+                style="@style/LabelResultado"/>
             <SeekBar
                 android:id="@+id/slider_rugas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:max="100"/>
+                style="@style/SeekBarResultado"/>
+
             <TextView
-                android:id="@+id/label_poros"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="Poros"
-                android:layout_marginTop="16dp"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:fontFamily="@font/cambay_regular"/>
+                android:layout_marginTop="12dp"
+                style="@style/LabelResultado"/>
             <SeekBar
                 android:id="@+id/slider_poros"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:max="100"/>
+                style="@style/SeekBarResultado"/>
 
-
-
-
-            <View android:layout_width="match_parent" android:layout_height="24dp" />
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="8dp"
-                app:cardBackgroundColor="#F0F0F0">
+                android:layout_marginTop="24dp"
+                app:cardCornerRadius="12dp"
+                app:cardBackgroundColor="#FFF3E0"
+                app:cardElevation="0dp">
                 <TextView
                     android:id="@+id/tv_concerns"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
-                    tools:text="PRINCIPAIS PREOCUPAÇÕES..."
+                    android:text="Carregando diagnóstico..."
                     android:textColor="@android:color/black"
-                    android:fontFamily="@font/cambay_regular"/>
+                    android:fontFamily="@font/roboto_regular"/>
             </androidx.cardview.widget.CardView>
 
-
-            <View android:layout_width="match_parent" android:layout_height="24dp" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ganhe 15 % nas compras acima\nde R$200"
-                android:textSize="24sp"
-                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:text="Ganhe 15% OFF\nnas compras acima de R$200"
+                android:textSize="20sp"
                 android:textAlignment="center"
-                android:textColor="@android:color/black"
-                android:fontFamily="@font/cambay_bold"/>
-
+                android:textColor="#4CAF50"
+                android:fontFamily="@font/roboto_bold"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center_horizontal"
-                android:layout_marginTop="24dp">
-                <Button
+                android:layout_marginTop="16dp">
+
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_comprar_rotina"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:minWidth="200dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
                     android:text="COMPRAR ROTINA"
-                    android:backgroundTint="#FF9800"
+                    app:backgroundTint="#F39A08"
+                    app:cornerRadius="24dp"
                     android:textColor="@android:color/white"
-                    android:fontFamily="@font/cambay_bold"/>
-                <Button
+                    android:fontFamily="@font/roboto_bold"/>
+
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_home"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:minWidth="200dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Home"
-                    android:backgroundTint="#FF9800"
-                    android:textColor="@android:color/white"
-                    android:fontFamily="@font/cambay_bold"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Voltar para Home"
+                    android:textColor="#F39A08"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    app:strokeColor="#F39A08"
+                    app:cornerRadius="24dp"
+                    android:fontFamily="@font/roboto_bold"/>
             </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Confira sua rotina\npersonalizada"
-                android:textSize="24sp"
-                android:textStyle="bold"
+                android:textSize="22sp"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
-                android:fontFamily="@font/cambay_bold"
-                android:layout_marginTop="60dp"/>
-
+                android:fontFamily="@font/roboto_bold"
+                android:layout_marginTop="40dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:layout_marginTop="24dp">
-                <Button
+                android:layout_marginTop="16dp">
+
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_manha"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="MANHÃ"
-                    android:textColor="@android:color/black"
-                    android:backgroundTint="@android:color/white"
-                    app:strokeColor="@android:color/darker_gray"
-                    app:strokeWidth="1dp"
-                    android:drawableStart="@drawable/ic_sun"
-                    android:fontFamily="@font/cambay_bold"
-                    android:layout_marginEnd="8dp"/>
-                <Button
+                    android:textColor="@android:color/white"
+                    app:backgroundTint="#F39A08"
+                    app:cornerRadius="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:fontFamily="@font/roboto_bold"/>
+
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_noite"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="NOITE"
-                    android:textColor="@android:color/white"
-                    android:backgroundTint="@color/dermage_pink"
-                    android:drawableStart="@drawable/ic_moon"
-                    android:fontFamily="@font/cambay_bold"
-                    android:layout_marginStart="8dp"/>
+                    android:textColor="#F39A08"
+                    app:backgroundTint="#F0F0F0"
+                    app:strokeColor="#F39A08"
+                    app:strokeWidth="1dp"
+                    app:cornerRadius="8dp"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/roboto_bold"/>
             </LinearLayout>
-
 
             <LinearLayout
                 android:id="@+id/container_rotina_manha"
@@ -232,7 +204,15 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginTop="16dp"
-                android:visibility="visible" />
+                android:padding="16dp"
+                android:background="#FAFAFA"
+                android:visibility="visible">
+                <TextView
+                    android:text="1. Limpeza: Sabonete Específico\n2. Proteção: Photoage Water"
+                    android:fontFamily="@font/roboto_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/container_rotina_noite"
@@ -240,16 +220,16 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginTop="16dp"
-                android:visibility="gone" />
+                android:padding="16dp"
+                android:background="#FAFAFA"
+                android:visibility="gone">
+                <TextView
+                    android:text="1. Limpeza: Sabonete Específico\n2. Tratamento: Sérum Noturno"
+                    android:fontFamily="@font/roboto_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
 
         </LinearLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:scaleType="fitEnd"
-            android:src="@drawable/footer_fundo" />
-
     </LinearLayout>
 </ScrollView>

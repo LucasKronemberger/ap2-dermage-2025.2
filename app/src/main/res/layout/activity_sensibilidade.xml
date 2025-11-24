@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fundobranco"
-    tools:context=".QuestPreocupacaoActivity">
+    tools:context=".SensibilidadeActivity">
 
     <ImageView
         android:id="@+id/ondalaranja"
@@ -41,12 +41,12 @@
         app:srcCompat="@drawable/setaback" />
 
     <TextView
-        android:id="@+id/contador3de6"
+        android:id="@+id/contadorPassos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/roboto_regular"
-        android:text="3 de 7"
+        android:text="5 de 7"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.962"
@@ -74,17 +74,17 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/progressBar"
         app:layout_constraintTop_toTopOf="@+id/progressBar"
-        app:layout_constraintWidth_percent="0.43"
+        app:layout_constraintWidth_percent="0.71"
         app:srcCompat="@drawable/barraprogresso" />
 
     <TextView
-        android:id="@+id/tvpreocupacoes"
+        android:id="@+id/tvSensibilidadeTitulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginHorizontal="24dp"
         android:gravity="center"
-        android:text="Em relação ao envelhecimento, qual nível melhor descreve o estado atual da sua pele?"
+        android:text="Qual a sensibilidade da sua pele?"
         android:textColor="#000000"
         android:textSize="20sp"
         android:fontFamily="@font/roboto_bold"
@@ -93,32 +93,32 @@
         app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
     <TextView
-        android:id="@+id/tvsbtpreocu"
+        android:id="@+id/tvSensibilidadeSubtitulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginHorizontal="24dp"
         android:gravity="center"
-        android:text="Selecione a opção que melhor descreve sua pele"
+        android:text="Identifique o nível de sensibilidade da sua pele"
         android:textColor="#7A7A7A"
         android:textSize="14sp"
         android:fontFamily="@font/roboto_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvpreocupacoes" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSensibilidadeTitulo" />
 
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnProxima2"
+        app:layout_constraintBottom_toTopOf="@+id/btnProxima"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvsbtpreocu">
+        app:layout_constraintTop_toBottomOf="@+id/tvSensibilidadeSubtitulo">
 
         <RadioGroup
-            android:id="@+id/opcoesPreocupacoes"
+            android:id="@+id/radioGroupSensibilidade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -126,7 +126,7 @@
             android:paddingBottom="16dp">
 
             <RadioButton
-                android:id="@+id/cb_manchas"
+                android:id="@+id/rb_nao_sensivel"
                 style="@style/OptionCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -136,13 +136,13 @@
                 android:paddingEnd="12dp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
-                android:text="Prevenção\n(sem rugas visíveis, foco em manutenção e hidratação)"
+                android:text="Não é sensível\n(Uso qualquer produto sem problemas)"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 app:buttonTint="@color/black" />
 
             <RadioButton
-                android:id="@+id/cb_brilho"
+                android:id="@+id/rb_levemente_sensivel"
                 style="@style/OptionCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -152,13 +152,13 @@
                 android:paddingEnd="12dp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
-                android:text="Sinais Iniciais\n(primeiras linhas finas, leve perda de luminosidade)"
+                android:text="Ligeiramente sensível\n(Às vezes, sinto um leve ardor ou vermelhidão com ativos fortes)"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 app:buttonTint="@color/black" />
 
             <RadioButton
-                android:id="@+id/cb_poros"
+                android:id="@+id/rb_sensivel"
                 style="@style/OptionCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -168,13 +168,13 @@
                 android:paddingEnd="12dp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
-                android:text="Sinais Moderados\n(linhas e rugas visíveis, leve perda de firmeza)"
+                android:text="Sensível\n(Tenho vermelhidão e irritação frequentes)"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 app:buttonTint="@color/black" />
 
             <RadioButton
-                android:id="@+id/cb_rugas"
+                android:id="@+id/rb_muito_sensivel"
                 style="@style/OptionCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -184,7 +184,7 @@
                 android:paddingEnd="12dp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
-                android:text="Sinais Avançados\n(rugas profundas, flacidez e perda de contorno acentuada)"
+                android:text="Muito Sensível\n(Tenho reações alérgicas ou rosácea)"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 app:buttonTint="@color/black" />
@@ -193,7 +193,7 @@
     </ScrollView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnProxima2"
+        android:id="@+id/btnProxima"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginHorizontal="24dp"

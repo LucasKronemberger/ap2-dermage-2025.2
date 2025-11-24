@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 
-class QuestPreocupacaoActivity : AppCompatActivity() {
+class PreocupacaoActivity : AppCompatActivity() {
 
     private var questions: ArrayList<QuizQuestion>? = null
     private var thisQuestionText: String = ""
@@ -17,46 +17,48 @@ class QuestPreocupacaoActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_quest_preocupacao)
+        setContentView(R.layout.activity_preocupacao)
 
-        // 1. Receber dados da tela anterior (Faixa Etária)
+        // 1. Receber lista de perguntas anteriores
         questions = intent.getParcelableArrayListExtra("QUESTIONS_SO_FAR")
         if (questions == null) {
             questions = ArrayList()
         }
 
-        // 2. Vincular componentes
-        // Atenção aos IDs do seu XML activity_quest_preocupacao.xml
-        val botaoProxima = findViewById<MaterialButton>(R.id.btnProxima2)
+        // 2. Vincular componentes da UI
+        val botaoProxima = findViewById<MaterialButton>(R.id.btnProxima)
         val botaoVoltar = findViewById<ImageButton>(R.id.setaBack)
-        val radioGroup = findViewById<RadioGroup>(R.id.opcoesPreocupacoes) // ID do grupo no seu XML
-        val tvTitulo = findViewById<TextView>(R.id.tvpreocupacoes)
+        val radioGroup = findViewById<RadioGroup>(R.id.radioGroupPreocupacao)
+        val tvTitulo = findViewById<TextView>(R.id.tvPreocupacaoTitulo)
 
         thisQuestionText = tvTitulo.text.toString()
         botaoProxima.isEnabled = false
 
         // 3. Lógica de Seleção
-        // Mapeando os IDs antigos (cb_...) para as respostas de Envelhecimento
         radioGroup.setOnCheckedChangeListener { _, checkedId ->
             if (checkedId != -1) {
                 thisAnswer = when (checkedId) {
-                    R.id.cb_manchas -> "Prevenção"
-                    R.id.cb_brilho -> "Sinais Iniciais"
-                    R.id.cb_poros -> "Sinais Moderados"
-                    R.id.cb_rugas -> "Sinais Avançados"
+                    R.id.rb_manchas -> "Manchas/Melasma"
+                    R.id.rb_acne -> "Acne Ativa"
+                    R.id.rb_poros -> "Poros e Textura"
+                    R.id.rb_desidratacao -> "Desidratação/Opacidade"
+                    R.id.rb_nenhuma_preocupacao -> "Nenhuma preocupação específica"
                     else -> "Não informado"
                 }
                 botaoProxima.isEnabled = true
             }
         }
 
-        // 4. Botão Próxima -> Vai para Rotina
+        // 4. Ação do Botão Próxima
         botaoProxima.setOnClickListener {
             if (thisAnswer != null) {
+                // Salva a resposta final
                 questions?.add(QuizQuestion(thisQuestionText, thisAnswer!!))
 
-                // PRÓXIMO PASSO: QuestRotinaActivity
-                val intent = Intent(this, QuestRotinaActivity::class.java)
+                // --- FINALIZAÇÃO DO QUESTIONÁRIO ---
+                // Agora o fluxo vai para a tela de Captura de Imagem (CameraX/Foto)
+                val intent = Intent(this, CapturaImagemActivity::class.java)
+
                 intent.putParcelableArrayListExtra("QUESTIONS_SO_FAR", questions)
                 startActivity(intent)
             } else {
@@ -64,6 +66,7 @@ class QuestPreocupacaoActivity : AppCompatActivity() {
             }
         }
 
+        // 5. Botão Voltar
         botaoVoltar.setOnClickListener {
             finish()
         }

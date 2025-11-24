@@ -41,12 +41,12 @@
         app:srcCompat="@drawable/setaback" />
 
     <TextView
-        android:id="@+id/contador3de6"
+        android:id="@+id/contadorPassos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/roboto_regular"
-        android:text="3 de 7"
+        android:text="6 de 7"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.962"
@@ -74,17 +74,17 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/progressBar"
         app:layout_constraintTop_toTopOf="@+id/progressBar"
-        app:layout_constraintWidth_percent="0.43"
+        app:layout_constraintWidth_percent="0.86"
         app:srcCompat="@drawable/barraprogresso" />
 
     <TextView
-        android:id="@+id/tvpreocupacoes"
+        android:id="@+id/tvPreocupacaoTitulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginHorizontal="24dp"
         android:gravity="center"
-        android:text="Em relação ao envelhecimento, qual nível melhor descreve o estado atual da sua pele?"
+        android:text="Qual é a sua maior preocupação específica (além do envelhecimento)?"
         android:textColor="#000000"
         android:textSize="20sp"
         android:fontFamily="@font/roboto_bold"
@@ -93,32 +93,32 @@
         app:layout_constraintTop_toBottomOf="@+id/progressBar" />
 
     <TextView
-        android:id="@+id/tvsbtpreocu"
+        android:id="@+id/tvPreocupacaoSubtitulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginHorizontal="24dp"
         android:gravity="center"
-        android:text="Selecione a opção que melhor descreve sua pele"
+        android:text="Selecione sua principal preocupação com a pele"
         android:textColor="#7A7A7A"
         android:textSize="14sp"
         android:fontFamily="@font/roboto_regular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvpreocupacoes" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPreocupacaoTitulo" />
 
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnProxima2"
+        app:layout_constraintBottom_toTopOf="@+id/btnProxima"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvsbtpreocu">
+        app:layout_constraintTop_toBottomOf="@+id/tvPreocupacaoSubtitulo">
 
         <RadioGroup
-            android:id="@+id/opcoesPreocupacoes"
+            android:id="@+id/radioGroupPreocupacao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -126,7 +126,7 @@
             android:paddingBottom="16dp">
 
             <RadioButton
-                android:id="@+id/cb_manchas"
+                android:id="@+id/rb_manchas"
                 style="@style/OptionCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -136,13 +136,13 @@
                 android:paddingEnd="12dp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
-                android:text="Prevenção\n(sem rugas visíveis, foco em manutenção e hidratação)"
+                android:text="Manchas\n(melasma, manchas solares, etc.)"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 app:buttonTint="@color/black" />
 
             <RadioButton
-                android:id="@+id/cb_brilho"
+                android:id="@+id/rb_acne"
                 style="@style/OptionCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -152,13 +152,13 @@
                 android:paddingEnd="12dp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
-                android:text="Sinais Iniciais\n(primeiras linhas finas, leve perda de luminosidade)"
+                android:text="Acne ativa\n(espinhas e cravos frequentes)"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 app:buttonTint="@color/black" />
 
             <RadioButton
-                android:id="@+id/cb_poros"
+                android:id="@+id/rb_poros"
                 style="@style/OptionCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -168,13 +168,13 @@
                 android:paddingEnd="12dp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
-                android:text="Sinais Moderados\n(linhas e rugas visíveis, leve perda de firmeza)"
+                android:text="Poros dilatados e textura irregular"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 app:buttonTint="@color/black" />
 
             <RadioButton
-                android:id="@+id/cb_rugas"
+                android:id="@+id/rb_desidratacao"
                 style="@style/OptionCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -184,7 +184,23 @@
                 android:paddingEnd="12dp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
-                android:text="Sinais Avançados\n(rugas profundas, flacidez e perda de contorno acentuada)"
+                android:text="Desidratação e aspecto opaco"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/black"
+                app:buttonTint="@color/black" />
+
+            <RadioButton
+                android:id="@+id/rb_nenhuma_preocupacao"
+                style="@style/OptionCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="60dp"
+                android:layout_marginBottom="12dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="Nenhuma preocupação específica"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/black"
                 app:buttonTint="@color/black" />
@@ -193,7 +209,7 @@
     </ScrollView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnProxima2"
+        android:id="@+id/btnProxima"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginHorizontal="24dp"

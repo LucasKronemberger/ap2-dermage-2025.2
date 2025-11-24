@@ -82,4 +82,20 @@
     <style name="RoundedImageSmall">
         <item name="cornerSize">12dp</item>
     </style>
+
+    <style name="LabelResultado">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+    </style>
+
+    <style name="SeekBarResultado">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:progressTint">#F39A08</item>
+        <item name="android:thumbTint">#F39A08</item>
+        <item name="android:enabled">false</item>
+    </style>
 </resources>
