@@ -16,6 +16,7 @@
         android:orientation="vertical"
         android:paddingBottom="32dp">
 
+        <!-- CABEÇALHO -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -57,67 +58,109 @@
                 android:fontFamily="@font/roboto_bold"
                 android:textAlignment="center"/>
 
+            <!-- 1. HIDRATAÇÃO (Vermelho) -->
             <TextView
-                android:text="Acne"
+                android:id="@+id/label_hidratacao"
+                android:text="Hidratação"
                 android:layout_marginTop="24dp"
                 style="@style/LabelResultado"/>
             <SeekBar
-                android:id="@+id/slider_acne"
-                style="@style/SeekBarResultado"/>
+                android:id="@+id/slider_hidratacao"
+                style="@style/SeekBarResultado"
+                android:progressTint="#E53935"
+                android:thumbTint="#E53935"/>
 
+            <!-- 2. ACNE (Laranja) -->
             <TextView
-                android:text="Hidratação"
+                android:id="@+id/label_acne"
+                android:text="Acne"
                 android:layout_marginTop="12dp"
                 style="@style/LabelResultado"/>
             <SeekBar
-                android:id="@+id/slider_hidratacao"
-                style="@style/SeekBarResultado"/>
+                android:id="@+id/slider_acne"
+                style="@style/SeekBarResultado"
+                android:progressTint="#FB8C00"
+                android:thumbTint="#FB8C00"/>
 
+            <!-- 3. MANCHAS (Verde) -->
             <TextView
+                android:id="@+id/label_manchas"
                 android:text="Manchas"
                 android:layout_marginTop="12dp"
                 style="@style/LabelResultado"/>
             <SeekBar
                 android:id="@+id/slider_manchas"
-                style="@style/SeekBarResultado"/>
+                style="@style/SeekBarResultado"
+                android:progressTint="#43A047"
+                android:thumbTint="#43A047"/>
 
+            <!-- 4. RUGAS (Rosa Dermage) -->
             <TextView
+                android:id="@+id/label_rugas"
                 android:text="Rugas"
                 android:layout_marginTop="12dp"
                 style="@style/LabelResultado"/>
             <SeekBar
                 android:id="@+id/slider_rugas"
-                style="@style/SeekBarResultado"/>
+                style="@style/SeekBarResultado"
+                android:progressTint="@color/dermage_pink"
+                android:thumbTint="@color/dermage_pink"/>
 
+            <!-- 5. OLEOSIDADE (Cinza Escuro) -->
             <TextView
-                android:text="Poros"
+                android:id="@+id/label_oleosidade"
+                android:text="Oleosidade"
                 android:layout_marginTop="12dp"
                 style="@style/LabelResultado"/>
             <SeekBar
-                android:id="@+id/slider_poros"
-                style="@style/SeekBarResultado"/>
+                android:id="@+id/slider_oleosidade"
+                style="@style/SeekBarResultado"
+                android:progressTint="#616161"
+                android:thumbTint="#616161"/>
 
+            <!-- CARD DIAGNÓSTICO (Estilo Novo) -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                app:cardCornerRadius="12dp"
-                app:cardBackgroundColor="#FFF3E0"
+                android:layout_marginTop="40dp"
+                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="#EEEEEE"
                 app:cardElevation="0dp">
-                <TextView
-                    android:id="@+id/tv_concerns"
-                    android:layout_width="wrap_content"
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:text="Carregando diagnóstico..."
-                    android:textColor="@android:color/black"
-                    android:fontFamily="@font/roboto_regular"/>
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:text="PRINCIPAIS PREOCUPAÇÕES"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/roboto_bold"/>
+
+                    <TextView
+                        android:id="@+id/tv_concerns"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Carregando diagnóstico..."
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:lineSpacingExtra="4dp"
+                        android:fontFamily="@font/roboto_regular"/>
+                </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="32dp"
                 android:text="Ganhe 15% OFF\nnas compras acima de R$200"
                 android:textSize="20sp"
                 android:textAlignment="center"
@@ -164,6 +207,7 @@
                 android:fontFamily="@font/roboto_bold"
                 android:layout_marginTop="40dp"/>
 
+            <!-- ABAS MANHÃ / NOITE -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -178,9 +222,11 @@
                     android:layout_weight="1"
                     android:text="MANHÃ"
                     android:textColor="@android:color/white"
-                    app:backgroundTint="#F39A08"
+                    app:backgroundTint="@color/dermage_pink"
                     app:cornerRadius="8dp"
                     android:layout_marginEnd="4dp"
+                    app:icon="@drawable/ic_sun"
+                    app:iconGravity="textStart"
                     android:fontFamily="@font/roboto_bold"/>
 
                 <com.google.android.material.button.MaterialButton
@@ -189,15 +235,19 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="NOITE"
-                    android:textColor="#F39A08"
+                    android:textColor="@color/dermage_pink"
                     app:backgroundTint="#F0F0F0"
-                    app:strokeColor="#F39A08"
+                    app:strokeColor="@color/dermage_pink"
                     app:strokeWidth="1dp"
                     app:cornerRadius="8dp"
                     android:layout_marginStart="4dp"
+                    app:icon="@drawable/ic_moon"
+                    app:iconGravity="textStart"
+                    app:iconTint="@color/dermage_pink"
                     android:fontFamily="@font/roboto_bold"/>
             </LinearLayout>
 
+            <!-- LISTAS -->
             <LinearLayout
                 android:id="@+id/container_rotina_manha"
                 android:layout_width="match_parent"
@@ -207,11 +257,6 @@
                 android:padding="16dp"
                 android:background="#FAFAFA"
                 android:visibility="visible">
-                <TextView
-                    android:text="1. Limpeza: Sabonete Específico\n2. Proteção: Photoage Water"
-                    android:fontFamily="@font/roboto_regular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
             <LinearLayout
@@ -223,13 +268,16 @@
                 android:padding="16dp"
                 android:background="#FAFAFA"
                 android:visibility="gone">
-                <TextView
-                    android:text="1. Limpeza: Sabonete Específico\n2. Tratamento: Sérum Noturno"
-                    android:fontFamily="@font/roboto_regular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
         </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitEnd"
+            android:src="@drawable/footer_fundo" />
+
     </LinearLayout>
 </ScrollView>

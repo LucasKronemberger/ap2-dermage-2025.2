@@ -14,6 +14,7 @@ import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import java.util.Locale
@@ -26,14 +27,19 @@ class ResultadoActivity : AppCompatActivity() {
     private lateinit var btnManha: MaterialButton
     private lateinit var btnNoite: MaterialButton
 
-    // Cores (Definidas no código para facilitar a alternância)
-    private val corLaranja = Color.parseColor("#F39A08")
-    private val corBranca = Color.WHITE
-    private val corFundoInativo = Color.parseColor("#F0F0F0")
+    // Cores
+    private var corRosa: Int = 0
+    private var corBranca: Int = 0
+    private var corFundoInativo: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_resultado)
+
+        // Inicializar cores
+        corRosa = ContextCompat.getColor(this, R.color.dermage_pink)
+        corBranca = Color.WHITE
+        corFundoInativo = Color.parseColor("#F0F0F0")
 
         // 1. Receber Dados da API
         val result = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -57,22 +63,21 @@ class ResultadoActivity : AppCompatActivity() {
 
         // 3. Preencher Dados na Tela
         if (result != null) {
+            // Texto de diagnóstico (Vem da API ou montado)
+            tvConcerns.text = result.concerns
 
-            // Texto de Diagnóstico
-            tvConcerns.text = "Diagnóstico: ${result.concerns}\n\nRecomendamos a rotina abaixo para equilibrar sua pele."
+            // Popular Sliders (Agora são 5)
+            popularSlider(findViewById(R.id.slider_hidratacao), findViewById(R.id.label_hidratacao), result.scores, "Hidratação")
+            popularSlider(findViewById(R.id.slider_acne), findViewById(R.id.label_acne), result.scores, "Acne")
+            popularSlider(findViewById(R.id.slider_manchas), findViewById(R.id.label_manchas), result.scores, "Manchas")
+            popularSlider(findViewById(R.id.slider_rugas), findViewById(R.id.label_rugas), result.scores, "Rugas")
+            // Nota: Verifique se sua API retorna "Oleosidade" ou "Oiliness".
+            // Caso contrário, mapeie corretamente no parâmetro tagName.
+            popularSlider(findViewById(R.id.slider_oleosidade), findViewById(R.id.label_oleosidade), result.scores, "Oleosidade")
 
-            // Popular Sliders (Notas)
-            popularSlider(findViewById(R.id.slider_acne), result.scores, "Acne")
-            popularSlider(findViewById(R.id.slider_hidratacao), result.scores, "Hidratação")
-            popularSlider(findViewById(R.id.slider_manchas), result.scores, "Manchas")
-            popularSlider(findViewById(R.id.slider_rugas), result.scores, "Rugas")
-            popularSlider(findViewById(R.id.slider_poros), result.scores, "Poros")
-
-            // Limpar containers antes de adicionar
+            // Limpar e Popular Listas de Produtos
             containerManha.removeAllViews()
             containerNoite.removeAllViews()
-
-            // Popular Listas de Produtos
             popularRotina(containerManha, result.routine.morning, "MANHÃ")
             popularRotina(containerNoite, result.routine.night, "NOITE")
 
@@ -87,21 +92,20 @@ class ResultadoActivity : AppCompatActivity() {
             tvConcerns.text = "Não foi possível carregar seus resultados. Tente novamente."
         }
 
-        // 4. Botão Voltar para Home
+        // 4. Navegação
         btnHome.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
 
-        // Botão Comprar (Link Genérico ou Específico)
         btnComprar.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.dermage.com.br/"))
             startActivity(intent)
         }
     }
 
-    // --- LÓGICA DE ABAS ---
+    // --- LÓGICA DE ABAS (ROSA QUANDO ATIVO) ---
     private fun setupTabs() {
         btnManha.setOnClickListener { atualizarAbas(ehManha = true) }
         btnNoite.setOnClickListener { atualizarAbas(ehManha = false) }
@@ -109,53 +113,56 @@ class ResultadoActivity : AppCompatActivity() {
 
     private fun atualizarAbas(ehManha: Boolean) {
         if (ehManha) {
-            // Visual Manhã ATIVO
+            // Manhã ATIVO (Rosa)
             containerManha.visibility = View.VISIBLE
             containerNoite.visibility = View.GONE
 
-            // Estilo Manhã (Preenchido)
-            btnManha.setBackgroundColor(corLaranja)
+            btnManha.setBackgroundColor(corRosa)
             btnManha.setTextColor(corBranca)
             btnManha.strokeWidth = 0
+            btnManha.iconTint = android.content.res.ColorStateList.valueOf(corBranca)
 
-            // Estilo Noite (Borda)
+            // Noite INATIVO (Fundo Claro + Texto Rosa)
             btnNoite.setBackgroundColor(corFundoInativo)
-            btnNoite.setTextColor(corLaranja)
-            btnNoite.setStrokeColor(android.content.res.ColorStateList.valueOf(corLaranja))
-            btnNoite.strokeWidth = 3 // Borda visível
+            btnNoite.setTextColor(corRosa)
+            btnNoite.setStrokeColor(android.content.res.ColorStateList.valueOf(corRosa))
+            btnNoite.strokeWidth = 2
+            btnNoite.iconTint = android.content.res.ColorStateList.valueOf(corRosa)
         } else {
-            // Visual Noite ATIVO
+            // Noite ATIVO (Rosa)
             containerManha.visibility = View.GONE
             containerNoite.visibility = View.VISIBLE
 
-            // Estilo Manhã (Borda)
+            // Manhã INATIVO
             btnManha.setBackgroundColor(corFundoInativo)
-            btnManha.setTextColor(corLaranja)
-            btnManha.setStrokeColor(android.content.res.ColorStateList.valueOf(corLaranja))
-            btnManha.strokeWidth = 3
+            btnManha.setTextColor(corRosa)
+            btnManha.setStrokeColor(android.content.res.ColorStateList.valueOf(corRosa))
+            btnManha.strokeWidth = 2
+            btnManha.iconTint = android.content.res.ColorStateList.valueOf(corRosa)
 
-            // Estilo Noite (Preenchido)
-            btnNoite.setBackgroundColor(corLaranja)
+            // Noite ATIVO
+            btnNoite.setBackgroundColor(corRosa)
             btnNoite.setTextColor(corBranca)
             btnNoite.strokeWidth = 0
+            btnNoite.iconTint = android.content.res.ColorStateList.valueOf(corBranca)
         }
     }
 
-    // --- LÓGICA DE DADOS ---
-    private fun popularSlider(seekBar: SeekBar, scores: List<SkinScore>, tagName: String) {
-        // Procura a nota na lista que veio da API
+    // --- POPULAR DADOS ---
+    private fun popularSlider(seekBar: SeekBar, label: TextView, scores: List<SkinScore>, tagName: String) {
+        // Tenta encontrar a nota correspondente na lista (ex: "Acne", "Oiliness", etc.)
         val score = scores.find { it.scoreTag.contains(tagName, ignoreCase = true) }
 
         if (score != null) {
-            // A API geralmente retorna 0.0 a 10.0 ou 0 a 100
-            // Assumindo que o SeekBar max é 100
             var valor = score.scoreNumber
-            if (valor <= 10) valor *= 10 // Ajuste de escala se vier pequeno
-
+            // Ajuste de escala se vier de 0-10 para 0-100
+            if (valor <= 10) valor *= 10
             seekBar.progress = valor.toInt()
         } else {
-            // Se não achar, deixa zerado ou esconde
-            seekBar.progress = 0
+            // Se não achar a nota, esconde o slider para não ficar zerado feio
+            // Ou pode deixar visível com 0 se preferir: seekBar.progress = 0
+            label.visibility = View.GONE
+            seekBar.visibility = View.GONE
         }
         // Trava o slider para o usuário não mexer
         seekBar.isEnabled = false
@@ -168,43 +175,40 @@ class ResultadoActivity : AppCompatActivity() {
             val tvVazio = TextView(this)
             tvVazio.text = "Nenhum produto específico para $periodo."
             tvVazio.setPadding(16, 32, 16, 32)
+            tvVazio.gravity = View.TEXT_ALIGNMENT_CENTER
             container.addView(tvVazio)
             return
         }
 
         produtos.forEachIndexed { index, produto ->
-            // Infla o layout do item (item_produto_resultado.xml)
-            // Certifique-se que você tem esse arquivo XML
+            // Usa o layout item_produto_resultado.xml
             val itemView = inflater.inflate(R.layout.item_produto_resultado, container, false)
-
 
             val tvTitulo = itemView.findViewById<TextView>(R.id.tv_produto_titulo)
             val tvDesc = itemView.findViewById<TextView>(R.id.tv_produto_desc)
             val tvPreco = itemView.findViewById<TextView>(R.id.tv_produto_preco)
             val ivImagem = itemView.findViewById<ImageView>(R.id.iv_produto_imagem)
             val btnVerMais = itemView.findViewById<Button>(R.id.btn_ver_mais)
+            val btnComprarItem = itemView.findViewById<Button>(R.id.btn_comprar)
 
-            // Preenche os dados
-            // Verifica se o ID tv_produto_passo existe no seu XML do item, se não, remove essa linha
+            // Preenche com segurança (?. para evitar crash se ID não existir no XML do item)
+            tvTitulo?.text = produto.title
+            tvDesc?.text = produto.description
 
-            tvTitulo.text = produto.title
-            tvDesc.text = produto.description
-
-            // Formatação de preço segura
             val precoFormatado = try {
                 "R$ ${"%.2f".format(produto.price).replace(".", ",")}"
             } catch (e: Exception) { "R$ ${produto.price}" }
-            tvPreco.text = precoFormatado
+            tvPreco?.text = precoFormatado
 
-            // Carrega imagem com Glide
-            Glide.with(this)
-                .load(produto.imageUrl)
-                .placeholder(R.drawable.dermagelogotype) // Imagem enquanto carrega
-                .error(R.drawable.dermagelogotype) // Imagem se der erro
-                .into(ivImagem)
+            if (ivImagem != null) {
+                Glide.with(this)
+                    .load(produto.imageUrl)
+                    .placeholder(R.drawable.dermagelogotype)
+                    .error(R.drawable.dermagelogotype)
+                    .into(ivImagem)
+            }
 
-            // Clique no botão do produto
-            btnVerMais.setOnClickListener {
+            val linkAction = View.OnClickListener {
                 if (!produto.link.isNullOrEmpty()) {
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(produto.link))
                     startActivity(intent)
@@ -212,6 +216,9 @@ class ResultadoActivity : AppCompatActivity() {
                     Toast.makeText(this, "Produto indisponível no site", Toast.LENGTH_SHORT).show()
                 }
             }
+
+            btnVerMais?.setOnClickListener(linkAction)
+            btnComprarItem?.setOnClickListener(linkAction)
 
             container.addView(itemView)
         }
