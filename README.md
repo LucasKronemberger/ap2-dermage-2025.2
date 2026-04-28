@@ -49,7 +49,7 @@ Para testar este projeto em seu ambiente de desenvolvimento:
 
 ## 🎓 Contexto Acadêmico
 Este projeto foi desenvolvido como parte de uma parceria entre o Ibmec e a Dermage, visando aplicar tecnologia de ponta para melhorar a experiência de consumo no mercado de dermocosméticos.
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+_____________________________________________________________________________________________________________________________________________________________________________
 Desenvolvido por LucasKronemberger 📱✨
 
 ## 🤖 Dermage AI Skin Analysis - Backend
@@ -115,5 +115,5 @@ Endpoint principal que recebe o formulário do quiz e a foto.
 - app/models/: Definições de schemas Pydantic para entrada e saída de dados.
 
 Projeto desenvolvido para a parceria Dermage & Ibmec. 🚀
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+_____________________________________________________________________________________________________________________________________________________________________________
 Responsável pela API: https://github.com/jpgiovanelli/ibmec.projeto-mobile.backend
