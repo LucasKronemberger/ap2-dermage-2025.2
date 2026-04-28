@@ -49,8 +49,9 @@ Para testar este projeto em seu ambiente de desenvolvimento:
 
 ## 🎓 Contexto Acadêmico
 Este projeto foi desenvolvido como parte de uma parceria entre o Ibmec e a Dermage, visando aplicar tecnologia de ponta para melhorar a experiência de consumo no mercado de dermocosméticos.
-_____________________________________________________________________________________________________________________________________________________________________________
+
 Desenvolvido por LucasKronemberger 📱✨
+_____________________________________________________________________________________________________________________________________________________________________________
 
 ## 🤖 Dermage AI Skin Analysis - Backend
 Este é o motor de inteligência artificial por trás do aplicativo Dermage. Trata-se de uma API de alto desempenho desenvolvida com FastAPI e Pydantic AI, que utiliza o modelo Gemini 2.5 Pro para realizar diagnósticos dermatológicos preliminares e recomendações de produtos.
